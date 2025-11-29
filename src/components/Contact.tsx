@@ -26,12 +26,13 @@ const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
   </a>
 );
 
-// --- Sub Component: Magnetic Button ---
+// --- Sub Component: Magnetic Button (Updated for WhatsApp) ---
 const MagneticButton = () => {
-  const btnRef = useRef<HTMLButtonElement>(null);
+  // Changed Ref type to HTMLAnchorElement since it's now a link
+  const btnRef = useRef<HTMLAnchorElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!btnRef.current) return;
 
     const { clientX, clientY } = e;
@@ -53,7 +54,10 @@ const MagneticButton = () => {
   };
 
   return (
-    <button
+    <a
+      href="https://wa.me/918209965066?text=Hi%20Webier,%20I%20want%20to%20start%20a%20project"
+      target="_blank"
+      rel="noopener noreferrer"
       ref={btnRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -61,10 +65,10 @@ const MagneticButton = () => {
         transform: `translate(${position.x}px, ${position.y}px)`,
         transition: "transform 0.1s ease-out",
       }}
-      className="group relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-[#1a1a1a] text-white flex items-center justify-center cursor-pointer hover:bg-[#3533cd] transition-colors duration-500 ease-out z-20"
+      className="group relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-[#1a1a1a] text-white flex items-center justify-center cursor-pointer hover:bg-[#25D366] transition-colors duration-500 ease-out z-20"
     >
       <div className="relative z-10 flex flex-col items-center gap-2 pointer-events-none">
-        <span className="font-display text-xl md:text-2xl font-bold uppercase tracking-widest group-hover:scale-110 transition-transform duration-300">
+        <span className="font-display text-xl md:text-2xl font-bold uppercase tracking-widest group-hover:scale-110 transition-transform duration-300 text-center">
           Start A<br />
           Project
         </span>
@@ -74,7 +78,7 @@ const MagneticButton = () => {
       {/* Ripple Effect on Hover */}
       <div className="absolute inset-0 rounded-full border border-black/10 scale-125 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-out" />
       <div className="absolute inset-0 rounded-full border border-black/5 scale-150 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 delay-75 ease-out" />
-    </button>
+    </a>
   );
 };
 
