@@ -55,7 +55,7 @@ const MagneticButton = () => {
 
   return (
     <a
-      href="https://wa.me/918209965066?text=Hi%20Webier,%20I%20want%20to%20start%20a%20project"
+      href="https://wa.me/918209965066?text=Hi%20Webier,%20I%20want%20to%20start%20a%20project."
       target="_blank"
       rel="noopener noreferrer"
       ref={btnRef}
