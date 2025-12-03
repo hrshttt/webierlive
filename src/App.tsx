@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Components
 import Navbar from "./Navbar";
@@ -88,6 +89,7 @@ const App: React.FC = () => {
         <Contact />
       </main>
       <Analytics />
+      <SpeedInsights />
       {/* <Footer /> */}
     </div>
   );
