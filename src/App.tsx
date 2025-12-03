@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import { Analytics } from "@vercel/analytics/react";
 
 // Components
 import Navbar from "./Navbar";
@@ -75,9 +76,7 @@ const App: React.FC = () => {
         description="We build high-performance websites and mobile apps. Transforming ideas into digital reality with modern design and cutting-edge technology."
         url="https://webier.online"
       />
-
       <Navbar />
-
       <main>
         <Hero />
         <Philosophy />
@@ -88,7 +87,7 @@ const App: React.FC = () => {
         {/* Contact acts as the visual footer */}
         <Contact />
       </main>
-
+      <Analytics />
       {/* <Footer /> */}
     </div>
   );
