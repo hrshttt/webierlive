@@ -7,7 +7,7 @@ import { ArrowUpRight, ArrowRight } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 /* --------------------------------------------------
-   DATA
+   DATA (Same as before)
 -------------------------------------------------- */
 const projects = [
   {
@@ -61,35 +61,40 @@ const projects = [
 -------------------------------------------------- */
 
 const SelectedWorks = () => {
-  const componentRef = useRef<HTMLDivElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const componentRef = useRef(null);
+  const sliderRef = useRef(null);
 
   useGSAP(
     () => {
-      // Only run GSAP on Desktop
-      if (window.innerWidth > 768) {
-        const slider = sliderRef.current;
-        const container = componentRef.current;
-        if (!slider || !container) return;
+      const slider = sliderRef.current;
+      const container = componentRef.current;
+      
+      if (!slider || !container) return;
 
+      // Logic for all screens (Desktop + Mobile)
+      const getScrollAmount = () => {
         const totalWidth = slider.scrollWidth;
         const windowWidth = window.innerWidth;
+        return -(totalWidth - windowWidth);
+      };
 
-        const xMove = -(totalWidth - windowWidth);
+      const tween = gsap.to(slider, {
+        x: getScrollAmount, // Use a function for responsive updates
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          pin: true,
+          scrub: 1,
+          start: "top top", // Changed to top top for better mobile locking
+          end: () => `+=${slider.scrollWidth - window.innerWidth}`,
+          invalidateOnRefresh: true, // Crucial for mobile resizing (address bar)
+        },
+      });
 
-        gsap.to(slider, {
-          x: xMove,
-          ease: "none",
-          scrollTrigger: {
-            trigger: container,
-            pin: true,
-            scrub: 1,
-            start: "center center",
-            end: () => "+=" + totalWidth,
-            invalidateOnRefresh: true,
-          },
-        });
-      }
+      // Cleanup
+      return () => {
+        tween.kill();
+      };
     },
     { scope: componentRef }
   );
@@ -157,9 +162,6 @@ const SelectedWorks = () => {
 
                 <img
                   src={project.img}
-                  /* SEO FIX: Better Alt Text + Lazy Loading 
-                      If this is the first project, eager load it. Else lazy load.
-                   */
                   alt={`${project.title} - ${project.desc.substring(0, 50)}...`}
                   loading="lazy"
                   width="600"
@@ -219,7 +221,7 @@ const SelectedWorks = () => {
               </div>
             </a>
           ))}
-
+          {/* Last Spacer */}
           <div className="w-[5vw] h-full flex-shrink-0"></div>
         </div>
       </div>

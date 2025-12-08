@@ -5,7 +5,6 @@ import { Instagram, Linkedin } from "lucide-react";
    TYPE DEFINITIONS
 ----------------------------------------------- */
 
-// 1. Updated: Links ab object hain (Label + URL)
 interface FooterLink {
   label: string;
   href: string;
@@ -13,10 +12,9 @@ interface FooterLink {
 
 interface FooterColumnProps {
   title: string;
-  links: FooterLink[]; // Array of objects
+  links: FooterLink[];
 }
 
-// 2. Updated: Added 'link' prop here
 interface MagneticSocialIconProps {
   icon: React.ReactNode;
   link: string;
@@ -32,7 +30,6 @@ interface Position {
 ----------------------------------------------- */
 
 const Footer = () => {
-  // Define Links Here
   const socialLinks = {
     instagram: "https://www.instagram.com/webier.in/",
     linkedin: "https://www.linkedin.com/company/webierdev/",
@@ -71,7 +68,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* RIGHT COLUMNS - UPDATED WITH LINKS */}
+          {/* RIGHT COLUMNS */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-16 md:gap-24">
             <FooterColumn
               title="Navigation"
@@ -92,7 +89,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* SOCIAL ICONS - UPDATED WITH LINKS */}
+        {/* SOCIAL ICONS */}
         <div className="flex gap-6 mt-20">
           <MagneticSocialIcon
             icon={<Instagram size={20} />}
@@ -116,7 +113,7 @@ const Footer = () => {
 };
 
 /* -----------------------------------------------
-   FOOTER COLUMN Component (Updated)
+   FOOTER COLUMN Component
 ----------------------------------------------- */
 
 const FooterColumn = ({ title, links }: FooterColumnProps) => (
@@ -126,14 +123,12 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => (
     </span>
 
     {links.map((item) => {
-      // Check if link is external (starts with http) to open in new tab
       const isExternal = item.href.startsWith("http");
 
       return (
         <a
           key={item.label}
           href={item.href}
-          // Only open in new tab if it's an external link
           target={isExternal ? "_blank" : "_self"}
           rel={isExternal ? "noopener noreferrer" : undefined}
           className="text-2xl md:text-3xl font-bold text-white/90 hover:text-white transition"
@@ -156,32 +151,40 @@ const StarIcon = () => (
 );
 
 /* -----------------------------------------------
-   MAGNETIC SOCIAL ICON (Updated)
+   MAGNETIC SOCIAL ICON (Updated Force)
 ----------------------------------------------- */
 
 const MagneticSocialIcon = ({ icon, link }: MagneticSocialIconProps) => {
   const ref = useRef<HTMLAnchorElement | null>(null);
   const [pos, setPos] = useState<Position>({ x: 0, y: 0 });
 
+  // Define Magnetic Strength (Lower is weaker)
+  const magneticStrength = 0.2; // Pehle 0.5 tha, ab 0.2 kar diya hai.
+
   return (
     <a
       href={link}
-      target="_blank" // Opens in new tab
-      rel="noopener noreferrer" // Security
+      target="_blank"
+      rel="noopener noreferrer"
       ref={ref}
       onMouseMove={(e: React.MouseEvent<HTMLAnchorElement>) => {
         if (!ref.current) return;
 
         const rect = ref.current.getBoundingClientRect();
 
+        // Calculate distance from center
+        const xDistance = e.clientX - (rect.left + rect.width / 2);
+        const yDistance = e.clientY - (rect.top + rect.height / 2);
+
         setPos({
-          x: (e.clientX - (rect.left + rect.width / 2)) * 0.5,
-          y: (e.clientY - (rect.top + rect.height / 2)) * 0.5,
+          x: xDistance * magneticStrength,
+          y: yDistance * magneticStrength,
         });
       }}
       onMouseLeave={() => setPos({ x: 0, y: 0 })}
       style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
-      className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#3533cd] transition-all"
+      // Added 'duration-200' for smoother return
+      className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#3533cd] transition-all duration-200 ease-out"
     >
       {icon}
     </a>
