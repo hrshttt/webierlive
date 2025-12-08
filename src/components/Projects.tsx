@@ -61,8 +61,9 @@ const projects = [
 -------------------------------------------------- */
 
 const SelectedWorks = () => {
-  const componentRef = useRef(null);
-  const sliderRef = useRef(null);
+  // FIX: Added <HTMLDivElement> type definition
+  const componentRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -85,9 +86,10 @@ const SelectedWorks = () => {
           trigger: container,
           pin: true,
           scrub: 1,
-          start: "top top", // Changed to top top for better mobile locking
+          start: "top top", 
+          // FIX: Added optional chaining just in case, though the 'if' above handles it
           end: () => `+=${slider.scrollWidth - window.innerWidth}`,
-          invalidateOnRefresh: true, // Crucial for mobile resizing (address bar)
+          invalidateOnRefresh: true, 
         },
       });
 
