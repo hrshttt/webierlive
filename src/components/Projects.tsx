@@ -17,9 +17,9 @@ const projects = [
     year: "2025",
     desc: "Sip slow. Japanese minimal vibes.",
     tags: ["Luxury Real Estate", "Brand Website", "GSAP", "Lenis"],
-    img: "/sip.jpg",
+    img: "/sip.png",
     color: "#D4AF37",
-    link: "https://savera-five.vercel.app/",
+    link: "https://sip-club-webier.vercel.app/",
   },
   {
 
