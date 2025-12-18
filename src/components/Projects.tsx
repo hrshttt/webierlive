@@ -12,28 +12,19 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: "01",
-    client: "SAVERA",
-    title: "SAVERA",
-    year: "2024",
-    desc: "A heritage-rich ultra-luxury real estate brand bridging Dubai and India. Designed with deep noir aesthetics, gold accents, and a timeless premium identity.",
+    client: "SIP",
+    title: "SIP CLub",
+    year: "2025",
+    desc: "Sip slow. Japanese minimal vibes.",
     tags: ["Luxury Real Estate", "Brand Website", "GSAP", "Lenis"],
-    img: "/savera.jpg",
+    img: "/sip.jpg",
     color: "#D4AF37",
     link: "https://savera-five.vercel.app/",
   },
   {
-    id: "02",
-    client: "VibeMaker",
-    title: "VibeMaker",
-    year: "2024",
-    desc: "A highly animated, GSAP-powered digital marketing website with smooth Lenis scrolling, vibrant gradients, and a futuristic UI crafted for bold brand energy.",
-    tags: ["Digital Agency", "Animations", "GSAP", "Lenis", "UI Design"],
-    img: "/vibemaker.jpg",
-    color: "#22C55E",
-    link: "https://vibemaker-hazel.vercel.app/",
-  },
-  {
-    id: "03",
+
+
+    id: "05",
     client: "Martini",
     title: "Martini",
     year: "2024",
@@ -41,10 +32,37 @@ const projects = [
     tags: ["Restaurant", "Luxury UI", "GSAP", "LocoScroll"],
     img: "/martini.jpg",
     color: "#C24E00",
-    link: "https://martini-self.vercel.app/",
+    link: "https://martini-webier.vercel.app/",
+
+
+
+
+    
+  },
+  {
+    id: "03",
+    client: "VibeMaker",
+    title: "VibeMaker",
+    year: "2024",
+    desc: "A highly animated, GSAP-powered digital marketing website with smooth Lenis scrolling, vibrant gradients, and a futuristic UI crafted for bold brand energy.",
+    tags: ["Digital Agency", "Animations", "GSAP", "Lenis", "UI Design"],
+    img: "/vibemaker.jpg",
+    color: "#22C55E",
+    link: "https://vibe-maker-sigma.vercel.app/",
   },
   {
     id: "04",
+    client: "SAVERA",
+    title: "SAVERA",
+    year: "2024",
+    desc: "A heritage-rich ultra-luxury real estate brand bridging Dubai and India. Designed with deep noir aesthetics, gold accents, and a timeless premium identity.",
+    tags: ["Luxury Real Estate", "Brand Website", "GSAP", "Lenis"],
+    img: "/savera.jpg",
+    color: "#D4AF37",
+    link: "https://savera-webier.vercel.app/",
+  },
+  {
+    id: "05",
     client: "Luxe Realty",
     title: "Luxe Realty",
     year: "2024",
@@ -52,7 +70,7 @@ const projects = [
     tags: ["Real Estate", "Modern UI", "Animations"],
     img: "/luxe.jpg",
     color: "#00D6A3",
-    link: "https://luxe-realstate.vercel.app/",
+    link: "https://luxe-realstate-webier.vercel.app/",
   },
 ];
 
