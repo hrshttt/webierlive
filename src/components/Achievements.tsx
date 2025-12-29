@@ -80,8 +80,8 @@ const stats: Stat[] = [
   {
     id: "metric-06",
     type: "standard",
-    value: 2,
-    suffix: "",
+    value: 5,
+    suffix: "+",
     label: "Core Team",
     sub: "Designers & Developers",
     desc: "A lean, sharp, multidisciplinary team obsessed with quality execution.",
