@@ -2,6 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+// REMOVED: Monitor and Scan icons were not being used
 import { ArrowUpRight, Plus, Info } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -57,14 +58,14 @@ const projects = [
   }
 ];
 
-
 const SelectedWorks = () => {
   const container = useRef(null);
 
   useGSAP(() => {
     const sections = gsap.utils.toArray(".work-section");
 
-    sections.forEach((section: any, i) => {
+    // CHANGED: Added underscore to _i since it is not used inside the loop
+    sections.forEach((section: any, _i) => {
       // 1. PINNING LOGIC (Stacked Effect)
       ScrollTrigger.create({
         trigger: section,
@@ -122,7 +123,6 @@ const SelectedWorks = () => {
             <span className="text-transparent" style={{ WebkitTextStroke: "1px black" }}>Archive</span>
           </h2>
           
-         
         </div>
       </div>
 
@@ -199,6 +199,7 @@ const SelectedWorks = () => {
               <a 
                 href={project.link}
                 target="_blank"
+                rel="noreferrer"
                 className="group relative flex items-center justify-between w-full max-w-[280px] px-8 py-5 bg-black rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] shadow-xl"
               >
                 {/* Liquid Fill Effect */}
@@ -216,8 +217,6 @@ const SelectedWorks = () => {
           </div>
         </div>
       ))}
-
-      
 
     </section>
   );
