@@ -2,249 +2,223 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, Plus, Monitor, Scan, Info } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* --------------------------------------------------
-   DATA (Same as before)
--------------------------------------------------- */
 const projects = [
   {
     id: "01",
-    client: "SIP",
-    title: "SIP CLub",
+    title: "SIP CLUB",
+    desc: "Tokyo-based café. Cool, aesthetic, and premium Japanese minimal vibes.",
     year: "2025",
-    desc: "Sip slow. Japanese minimal vibes.",
-    tags: ["Luxury Real Estate", "Brand Website", "GSAP", "Lenis"],
-    img: "/sip.png",
-    color: "#D4AF37",
+    img: "/sip.jpg",
     link: "https://sip-club-webier.vercel.app/",
   },
   {
-
-
-    id: "05",
-    client: "Martini",
-    title: "Martini",
-    year: "2024",
-    desc: "A high-value luxury restaurant experience for Pune, crafted with cinematic motion, warm premium tones, and immersive micro-interactions.",
-    tags: ["Restaurant", "Luxury UI", "GSAP", "LocoScroll"],
-    img: "/martini.jpg",
-    color: "#C24E00",
-    link: "https://martini-webier.vercel.app/",
-
-
-
-
-    
+    id: "02",
+    title: "KORDEN",
+    desc: "Semiconductor product brand focused on high-performance tech solutions.",
+    year: "2025",
+    img: "/korden.jpg",
+    link: "https://www.korden.tech/",
   },
   {
     id: "03",
-    client: "VibeMaker",
-    title: "VibeMaker",
-    year: "2024",
-    desc: "A highly animated, GSAP-powered digital marketing website with smooth Lenis scrolling, vibrant gradients, and a futuristic UI crafted for bold brand energy.",
-    tags: ["Digital Agency", "Animations", "GSAP", "Lenis", "UI Design"],
-    img: "/vibemaker.jpg",
-    color: "#22C55E",
-    link: "https://vibe-maker-sigma.vercel.app/",
+    title: "SOZO",
+    desc: "Premium clothing brand crafting high-quality, modern fashion essentials.",
+    year: "2025",
+    img: "/sozo.jpg",
+    link: "https://www.sozocorporate.com/",
   },
   {
     id: "04",
-    client: "SAVERA",
     title: "SAVERA",
+    desc: "Luxury real estate brand selling premium properties across Dubai and India.",
     year: "2024",
-    desc: "A heritage-rich ultra-luxury real estate brand bridging Dubai and India. Designed with deep noir aesthetics, gold accents, and a timeless premium identity.",
-    tags: ["Luxury Real Estate", "Brand Website", "GSAP", "Lenis"],
     img: "/savera.jpg",
-    color: "#D4AF37",
     link: "https://savera-webier.vercel.app/",
   },
   {
     id: "05",
-    client: "Luxe Realty",
-    title: "Luxe Realty",
+    title: "MARTINI",
+    desc: "Aesthetic café based in Pune. Cinematic dining with a luxury experience.",
     year: "2024",
-    desc: "A modern real estate website built with smooth interactions, clean aesthetics, pastel accents, and a professional polished layout.",
-    tags: ["Real Estate", "Modern UI", "Animations"],
-    img: "/luxe.jpg",
-    color: "#00D6A3",
-    link: "https://luxe-realstate-webier.vercel.app/",
+    img: "/martini.jpg",
+    link: "https://martini-webier.vercel.app/",
   },
+  {
+    id: "06",
+    title: "VIBEMAKER",
+    desc: "Bold digital marketing agency powered by GSAP-driven experiences.",
+    year: "2024",
+    img: "/vibemaker.jpg",
+    link: "https://vibe-maker-sigma.vercel.app/",
+  }
 ];
 
-/* --------------------------------------------------
-   COMPONENT
--------------------------------------------------- */
 
 const SelectedWorks = () => {
-  // FIX: Added <HTMLDivElement> type definition
-  const componentRef = useRef<HTMLDivElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const container = useRef(null);
 
-  useGSAP(
-    () => {
-      const slider = sliderRef.current;
-      const container = componentRef.current;
-      
-      if (!slider || !container) return;
+  useGSAP(() => {
+    const sections = gsap.utils.toArray(".work-section");
 
-      // Logic for all screens (Desktop + Mobile)
-      const getScrollAmount = () => {
-        const totalWidth = slider.scrollWidth;
-        const windowWidth = window.innerWidth;
-        return -(totalWidth - windowWidth);
-      };
-
-      const tween = gsap.to(slider, {
-        x: getScrollAmount, // Use a function for responsive updates
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          pin: true,
-          scrub: 1,
-          start: "top top", 
-          // FIX: Added optional chaining just in case, though the 'if' above handles it
-          end: () => `+=${slider.scrollWidth - window.innerWidth}`,
-          invalidateOnRefresh: true, 
-        },
+    sections.forEach((section: any, i) => {
+      // 1. PINNING LOGIC (Stacked Effect)
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        pin: true,
+        pinSpacing: false,
+        end: "bottom top",
       });
 
-      // Cleanup
-      return () => {
-        tween.kill();
-      };
-    },
-    { scope: componentRef }
-  );
+      // 2. KINETIC BACKGROUND MOVEMENT
+      const title = section.querySelector(".work-title");
+      if (title) {
+        gsap.to(title, {
+          xPercent: -20,
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.5,
+          }
+        });
+      }
+
+      // 3. IMAGE SCALE REVEAL
+      const img = section.querySelector(".work-img-container");
+      gsap.fromTo(img, 
+        { scale: 0.9, opacity: 0.8 },
+        { 
+          scale: 1, 
+          opacity: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "top top",
+            scrub: 1,
+          }
+        }
+      );
+    });
+  }, { scope: container });
 
   return (
-    <section id="work" className="bg-[#f8f8f8] text-[#1a1a1a] pb-12 md:pb-0">
-      {/* 1. HEADER */}
-      <div className="w-full px-4 md:px-12 lg:px-24 pt-16 md:pt-24 pb-8 md:pb-12">
-        <div className="flex flex-col items-center text-center md:flex-row md:justify-between md:items-end md:text-left border-b border-black/10 pb-8">
-          <div>
-            <h2 className="font-display text-6xl md:text-9xl font-black uppercase tracking-tighter text-[#3533CD] leading-[0.85]">
-              Selected <br />
-              <span
-                className="text-transparent"
-                style={{ WebkitTextStroke: "1px black" }}
-              >
-                Works
-              </span>
-            </h2>
+    <section ref={container} className="bg-[#fcfcfc] overflow-hidden relative">
+      
+      {/* --- RESPONSIVE HEADER --- */}
+      <div className=" flex flex-col justify-center px-6 md:px-20 bg-[#fcfcfc] relative z-20 border-b border-black/5">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex items-center gap-3 mt-20 mb-5">
+            <span className="w-2 h-2 bg-[#3533CD] rounded-full animate-pulse"></span>
+            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-black/40">Portfolio Archive 2026</p>
           </div>
-          <div className="flex items-center gap-4 mt-6 md:mt-0 justify-center md:justify-start">
-            <div className="w-3 h-3 bg-[#FFC947] rounded-full animate-pulse"></div>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-black/50">
-              / Recent Cases
-            </p>
-          </div>
+          
+          <h2 className="font-display text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-20">
+            <span className="text-[#3533CD]">Selected</span> <br /> 
+            <span className="text-transparent" style={{ WebkitTextStroke: "1px black" }}>Archive</span>
+          </h2>
+          
+         
         </div>
       </div>
 
-      {/* 2. PINNED SCROLL AREA */}
-      <div
-        ref={componentRef}
-        className="w-full h-screen overflow-hidden flex items-center bg-[#f8f8f8]"
-      >
-        <div
-          ref={sliderRef}
-          className="
-            flex flex-row 
-            gap-6 md:gap-12 
-            px-4 md:px-12 lg:px-24 
-            w-fit
-          "
+      {/* --- WORK SECTIONS --- */}
+      {projects.map((project) => (
+        <div 
+          key={project.id} 
+          className="work-section relative h-screen w-full flex items-center justify-center bg-[#fcfcfc]"
         >
-          {projects.map((project, index) => (
-            <a
-              href={project.link}
-              key={index}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                group relative flex-shrink-0 
-                w-[85vw] md:w-[500px] lg:w-[600px] 
-                h-[60vh] md:h-[70vh] 
-                bg-white rounded-[2rem] p-3 shadow-sm hover:shadow-2xl transition-all duration-500 border border-black/5 flex flex-col block
-                cursor-pointer
-              "
-              aria-label={`View Case Study: ${project.title}`}
-            >
-              {/* --- IMAGE AREA --- */}
-              <div
-                className="relative w-full h-[55%] rounded-[1.5rem] overflow-hidden bg-gray-100"
-                style={{ backgroundColor: project.color }}
-              >
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 duration-500" />
+          {/* AMBIENT BLOBS */}
+          <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-[#3533CD]/5 blur-[100px] rounded-full pointer-events-none"></div>
 
-                <img
-                  src={project.img}
-                  alt={`${project.title} - ${project.desc.substring(0, 50)}...`}
-                  loading="lazy"
-                  width="600"
-                  height="400"
-                  className="w-full h-full object-cover transition-transform duration-[1s] ease-in-out group-hover:scale-110"
-                />
+          {/* KINETIC BACKGROUND TEXT */}
+          <h3 className="work-title absolute top-1/2 left-0 -translate-y-1/2 whitespace-nowrap font-display text-[25vw] font-black uppercase text-black/[0.015] pointer-events-none z-0 select-none">
+            {project.title} • {project.id} • {project.title}
+          </h3>
 
-                {/* Floating View Button */}
-                <div className="hidden md:flex absolute inset-0 items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-24 h-24 bg-white/30 backdrop-blur-xl border border-white/50 rounded-full flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                    <ArrowUpRight className="text-white w-8 h-8" />
-                  </div>
+          <div className="relative z-10 w-full max-w-7xl px-4 md:px-12 grid grid-cols-12 gap-6 md:gap-16 items-center">
+            
+            {/* --- LEFT: THE CARD PIECE --- */}
+            <div className="col-span-12 lg:col-span-7">
+              <div className="work-img-container relative group">
+                {/* Industrial Detailing */}
+                <div className="absolute -top-3 -left-3 flex gap-1">
+                  <div className="w-1.5 h-1.5 bg-[#3533CD]"></div>
+                  <div className="w-6 h-[1px] bg-black/10 mt-[3px]"></div>
                 </div>
-              </div>
+                
 
-              {/* --- CONTENT AREA --- */}
-              <div className="flex-1 flex flex-col justify-between pt-6 px-4 pb-4">
-                <div className="mb-4 md:mb-0">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="font-display text-3xl md:text-5xl font-black uppercase tracking-tight text-black leading-[0.9]">
-                      {project.title}
-                    </h3>
-                    <span className="font-display text-4xl md:text-5xl text-black/10 group-hover:text-black/20 transition-colors duration-500">
-                      {project.id}
-                    </span>
-                  </div>
+                {/* Main Image Wrapper */}
+                <div className="relative aspect-[4/5] md:aspect-video overflow-hidden rounded-2xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.12)] border border-black/5 bg-white">
+                  <img 
+                    src={project.img} 
+                    alt={project.title}
+                    loading="lazy" 
+                    className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                  />
+                  
+            
 
-                  <p className="font-sans text-sm md:text-base text-black/60 leading-relaxed font-medium line-clamp-3">
-                    {project.desc}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1.5 bg-[#f6f6fa] border border-black/5 rounded-full font-mono text-[10px] uppercase tracking-wide text-black/60 group-hover:bg-[#3533CD] group-hover:text-white transition-colors duration-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="w-full h-[1px] bg-black/5 mb-4"></div>
-
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:text-[#3533cd] transition-colors group/btn">
-                      Case Study{" "}
-                      <ArrowRight
-                        size={14}
-                        className="group-hover/btn:translate-x-1 transition-transform"
-                      />
+                  <div className="absolute bottom-6 right-6 z-20">
+                    <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-sm group-hover:bg-[#3533CD] group-hover:border-[#3533CD] transition-all duration-500">
+                      <Plus className="text-white w-6 h-6 transition-transform group-hover:rotate-90" />
                     </div>
                   </div>
                 </div>
               </div>
-            </a>
-          ))}
-          {/* Last Spacer */}
-          <div className="w-[5vw] h-full flex-shrink-0"></div>
+            </div>
+
+            {/* --- RIGHT: CONTENT PIECE --- */}
+            <div className="col-span-12 lg:col-span-5 flex flex-col gap-6 md:gap-10 mt-6 lg:mt-0 lg:pl-4">
+              <div className="flex items-center justify-between lg:justify-start lg:gap-8">
+                <div className="flex flex-col">
+                  <span className="font-display text-6xl font-black text-black leading-none italic">
+                    {project.id}<span className="text-[#3533CD]">.</span>
+                  </span>
+                </div>
+
+              </div>
+
+              <div className="space-y-4 md:space-y-6">
+                <h4 className="font-display text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-black leading-[0.85] transition-all">
+                  {project.title}
+                </h4>
+                <div className="flex gap-4 items-start">
+                  <Info size={16} className="text-[#3533CD] mt-1 shrink-0" />
+                  <p className="font-sans text-black/60 text-sm md:text-base leading-relaxed max-w-sm">
+                    {project.desc}
+                  </p>
+                </div>
+              </div>
+
+              {/* ACTION BUTTON */}
+              <a 
+                href={project.link}
+                target="_blank"
+                className="group relative flex items-center justify-between w-full max-w-[280px] px-8 py-5 bg-black rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] shadow-xl"
+              >
+                {/* Liquid Fill Effect */}
+                <div className="absolute inset-0 w-0 h-full bg-[#3533CD] transition-all duration-500 ease-out group-hover:w-full"></div>
+                
+                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px] text-white transition-colors duration-500">
+                  Launch Project
+                </span>
+                
+                <div className="relative z-10 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white backdrop-blur-md group-hover:bg-white group-hover:text-[#3533CD] transition-all duration-500 transform group-hover:rotate-45">
+                  <ArrowUpRight size={18} />
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
+
+      
+
     </section>
   );
 };
