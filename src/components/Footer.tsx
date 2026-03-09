@@ -58,7 +58,7 @@ const Footer = () => {
           <div className="flex flex-col gap-8 max-w-xl">
             <h3 className="font-display text-6xl md:text-7xl font-black leading-[0.9]">
               Webier <br />
-              Agency.
+              Studio.
             </h3>
 
             <p className="font-sans text-white/80 text-xl leading-relaxed max-w-md font-light">

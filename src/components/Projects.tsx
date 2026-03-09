@@ -50,11 +50,11 @@ const projects = [
   },
   {
     id: "06",
-    title: "VIBEMAKER",
-    desc: "Bold digital marketing agency powered by GSAP-driven experiences.",
+    title: "EASTPOINTE",
+    desc: "A Luxury Lake Cabin Experience perfect balance of rugged nature and refined comfort",
     year: "2024",
-    img: "/vibemaker.jpg",
-    link: "https://vibe-maker-sigma.vercel.app/",
+    img: "/eastpoint.jpg",
+    link: "https://www.eastpointekc.com/",
   }
 ];
 

@@ -242,7 +242,7 @@ const Hero: React.FC = () => {
         {/* Top Meta Details */}
         <div className="absolute top-28 w-full max-w-[90vw] flex justify-between font-display text-xs md:text-sm font-semibold tracking-widest uppercase opacity-40 hero-meta">
           <span>Est. 2025</span>
-          <span>Web Dev Agency</span>
+          <span>Web Dev Studio</span>
         </div>
 
         {/* Massive Headline - SEO Optimized */}

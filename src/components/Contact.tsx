@@ -84,7 +84,7 @@ const MagneticButton = () => {
 
 // --- Main Component ---
 const Contact = () => {
-  const email = "webierwebdev@gmail.com";
+  const email = "contact@webierstudio.com";
 
   return (
     <section
@@ -125,7 +125,7 @@ const Contact = () => {
           href={`mailto:${email}`}
           className="group relative cursor-pointer inline-flex items-center justify-center gap-4 md:gap-8 hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
         >
-          <h3 className="font-sans text-3xl md:text-6xl font-light text-black/80 group-hover:text-[#3533CD] transition-colors duration-300">
+          <h3 className="font-sans text-2xl md:text-6xl font-light text-black/80 group-hover:text-[#3533CD] transition-colors duration-300">
             {email}
           </h3>
 
