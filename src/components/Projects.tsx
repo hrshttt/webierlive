@@ -66,21 +66,65 @@ const SelectedWorks = () => {
         });
       }
 
-      // 3. IMAGE SCALE REVEAL
+      // 3. DIAMOND CLIP-PATH REVEAL & PARALLAX
       const img = section.querySelector(".work-img-container");
+      const videoAsset = section.querySelector("video");
+      const textBlock = section.querySelector(".work-text-content");
+
+      // Outer container clip-path and rotation reveal
       gsap.fromTo(img,
-        { scale: 0.9, opacity: 0.8 },
+        { 
+          clipPath: "polygon(50% 20%, 80% 50%, 50% 80%, 20% 50%)", 
+          scale: 0.85,
+          rotation: 4
+        },
         {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           scale: 1,
-          opacity: 1,
+          rotation: 0,
           scrollTrigger: {
             trigger: section,
             start: "top bottom",
             end: "top top",
-            scrub: 1,
+            scrub: 1.2,
           }
         }
       );
+
+      // Inner video parallax scaling
+      if (videoAsset) {
+        gsap.fromTo(videoAsset,
+          { scale: 1.6 },
+          {
+            scale: 1,
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "top top",
+              scrub: 1.2,
+            }
+          }
+        );
+      }
+
+      // 4. KINETIC SKEW TEXT REVEAL
+      if (textBlock) {
+        gsap.fromTo(textBlock,
+          { y: 150, opacity: 0, skewY: 8 },
+          {
+            y: 0,
+            opacity: 1,
+            skewY: 0,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              end: "top 20%",
+              scrub: 1,
+            }
+          }
+        );
+      }
 
       // 4. VIDEO PLAYBACK CONTROL
       const video = section.querySelector("video");
@@ -127,31 +171,31 @@ const SelectedWorks = () => {
           <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-[#3533CD]/5 blur-[100px] rounded-full pointer-events-none"></div>
 
           {/* KINETIC BACKGROUND TEXT */}
-          <h3 className="work-title absolute top-1/2 left-0 -translate-y-1/2 whitespace-nowrap font-display text-[25vw] font-black uppercase text-black/[0.015] pointer-events-none z-0 select-none">
-            {project.title} • {project.id} • {project.title}
+          <h3 className="work-title absolute top-1/2 left-0 -translate-y-1/2 whitespace-nowrap font-display text-[25vw] font-black uppercase text-transparent z-0 select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(0,0,0,0.05)" }}>
+            {project.title} • {project.id} • {project.title} • {project.id} •
           </h3>
 
           <div className="relative z-10 w-full max-w-7xl px-4 md:px-12 grid grid-cols-12 gap-6 md:gap-16 items-center">
 
             {/* --- LEFT: THE CARD PIECE --- */}
             <div className="col-span-12 lg:col-span-8 cursor-pointer">
-              <div className="work-img-container relative group active:scale-[0.98] transition-transform duration-500 ease-out">
-                {/* Industrial Detailing */}
-                <div className="absolute -top-3 -left-3 flex gap-1">
-                  <div className="w-1.5 h-1.5 bg-[#3533CD]"></div>
-                  <div className="w-6 h-[1px] bg-black/10 mt-[3px]"></div>
-                </div>
+              <div className="work-img-container w-full h-full">
+                <div className="relative group active:scale-[0.96] md:hover:scale-[1.02] md:hover:-rotate-1 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                  {/* Industrial Detailing */}
+                  <div className="absolute -top-3 -left-3 flex gap-1 z-20">
+                    <div className="w-1.5 h-1.5 bg-[#3533CD]"></div>
+                    <div className="w-6 h-[1px] bg-black/10 mt-[3px]"></div>
+                  </div>
 
-
-                {/* Main Image Wrapper */}
-                <div className="relative aspect-video lg:aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.12)] border border-black/5 bg-white">
-                  <video
-                    src={project.video}
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
-                  />
+                  {/* Main Image Wrapper */}
+                  <div className="relative aspect-video lg:aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.2)] border border-black/5 bg-white group-hover:shadow-[0_50px_100px_-20px_rgba(53,51,205,0.3)] transition-shadow duration-700">
+                    <video
+                      src={project.video}
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                    />
 
 
 
@@ -165,7 +209,7 @@ const SelectedWorks = () => {
             </div>
 
             {/* --- RIGHT: CONTENT PIECE --- */}
-            <div className="col-span-12 lg:col-span-4 flex flex-col gap-4 md:gap-8 mt-4 lg:mt-0 lg:pl-4">
+            <div className="col-span-12 lg:col-span-4 flex flex-col gap-4 md:gap-8 mt-4 lg:mt-0 lg:pl-4 work-text-content">
               <div className="flex items-center justify-between lg:justify-start lg:gap-8">
                 <div className="flex flex-col">
                   <span className="font-display text-6xl font-black text-black leading-none italic">
