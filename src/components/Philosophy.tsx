@@ -30,19 +30,7 @@ const Philosophy = () => {
     if (!container || !textElement || !titleElement || !lineElement) return;
 
     const ctx = gsap.context(() => {
-      /* 1. Split text into words */
-      const words = textElement.innerText.split(" ");
-      textElement.innerHTML = words
-        .map(
-          (word: string) =>
-            // Maine "transition-colors" hata diya kyunki ab hover effect nahi hai
-            `<span class="word inline-block opacity-10 cursor-default" style="transform-origin: center bottom;">${word}</span>`
-        )
-        .join(" ");
-
-      const wordElements = textElement.querySelectorAll<HTMLSpanElement>(".word");
-
-      /* 2. Scroll Animation — Title */
+      /* 1. Scroll Animation — Title */
       gsap.fromTo(
         titleElement,
         { y: 50, opacity: 0 },
@@ -58,7 +46,7 @@ const Philosophy = () => {
         }
       );
 
-      /* Divider line */
+      /* 2. Divider line */
       gsap.fromTo(
         lineElement,
         { width: 0 },
@@ -74,29 +62,43 @@ const Philosophy = () => {
         }
       );
 
-      /* Paragraph word stagger reveal (Scroll Animation Only) */
-      gsap.fromTo(
-        wordElements,
+      /* 3. Cinematic Blur-Up Reveal & Highlight Wipe */
+      const wordBlocks = textElement.querySelectorAll(".word-block");
+      const highlight = textElement.querySelector(".highlight-bg");
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: textElement,
+          start: "top 80%",
+        }
+      });
+
+      // Smooth cinematic ripple blur reveal
+      tl.fromTo(wordBlocks, 
         {
-          opacity: 0.1,
-          y: 20,
-          filter: "blur(4px)",
+          opacity: 0,
+          filter: "blur(10px)",
+          y: 15,
         },
         {
           opacity: 1,
-          y: 0,
           filter: "blur(0px)",
-          color: "#000000",
-          stagger: 0.05,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: textElement,
-            start: "top 85%",
-            end: "bottom 60%",
-            scrub: 1,
-          },
-        }
+          y: 0,
+          stagger: 0.03,
+          duration: 1,
+          ease: "power3.out",
+        }, 
+        0
       );
+
+      // Sweeping underline animation
+      if (highlight) {
+        tl.to(highlight, {
+          backgroundPosition: "0% 100%",
+          duration: 1.5,
+          ease: "power3.inOut",
+        }, 0.4); // Delay slightly so it sweeps exactly as the words land
+      }
 
       // Maine yahan se Hover Logic remove kar di hai
 
@@ -169,14 +171,42 @@ const Philosophy = () => {
 
         {/* RIGHT */}
         <div className="lg:col-span-8">
-          <p
-            ref={textRef}
-            className="font-sans text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.15] text-[#000000] tracking-tight"
-          >
-            We believe that digital products should be more than just
-            functional. They should be intuitive, immersive, and memorable.
-            We blend strategy with art to create websites that don't just load —
-            they live.
+          <p className="font-sans text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.35] text-[#000000] tracking-tight" ref={textRef as any}>
+            
+            {"Most agencies sell you a website.".split(" ").map((word, i) => (
+              <span key={`line1-${i}`}>
+                <span className="word-block inline-block opacity-0">{word}</span>
+                {" "}
+              </span>
+            ))}
+            
+            <span 
+              className="highlight-bg pb-2" 
+              style={{ 
+                WebkitBoxDecorationBreak: "clone",
+                boxDecorationBreak: "clone",
+                backgroundImage: "linear-gradient(to right, #3533CD 50%, transparent 50%)", 
+                backgroundSize: "200% 6px", 
+                backgroundPosition: "100% 100%",
+                backgroundRepeat: "no-repeat"
+              }}
+            >
+              {"We build the thing your competitors will WISH they thought of first.".split(" ").map((word, i) => (
+                <span key={`line2-${i}`}>
+                  <span className="word-block inline-block opacity-0">{word}</span>
+                  {" "}
+                </span>
+              ))}
+            </span>
+            
+            {" "}
+            {"No bloated teams. No templates. Just two people who care too much about your business.".split(" ").map((word, i) => (
+              <span key={`line3-${i}`}>
+                <span className="word-block inline-block opacity-0">{word}</span>
+                {" "}
+              </span>
+            ))}
+
           </p>
         </div>
       </div>

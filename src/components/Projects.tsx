@@ -3,8 +3,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// REMOVED: Monitor and Scan icons were not being used
-import { ArrowUpRight, Plus, Info } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,223 +35,164 @@ const projects = [
 ];
 
 const SelectedWorks = () => {
-  const container = useRef(null);
+  const container = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    const sections = gsap.utils.toArray(".work-section");
+    const cards = gsap.utils.toArray(".project-card");
 
-    // CHANGED: Added underscore to _i since it is not used inside the loop
-    sections.forEach((section: any, _i) => {
-      // 1. PINNING LOGIC (Stacked Effect)
-      ScrollTrigger.create({
-        trigger: section,
+    // Set initial clip-path states
+    gsap.set(cards[0] as Element, { zIndex: 10, clipPath: "inset(0% 0% 0% 0%)" });
+    gsap.set(cards[1] as Element, { zIndex: 20, clipPath: "inset(100% 0% 0% 0%)" });
+    gsap.set(cards[2] as Element, { zIndex: 30, clipPath: "inset(100% 0% 0% 0%)" });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
         start: "top top",
+        end: "+=3000",
+        scrub: 1,
         pin: true,
-        pinSpacing: false,
-        end: "bottom top",
-      });
-
-      // 2. KINETIC BACKGROUND MOVEMENT
-      const title = section.querySelector(".work-title");
-      if (title) {
-        gsap.to(title, {
-          xPercent: -20,
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.5,
-          }
-        });
-      }
-
-      // 3. DIAMOND CLIP-PATH REVEAL & PARALLAX
-      const img = section.querySelector(".work-img-container");
-      const videoAsset = section.querySelector("video");
-      const textBlock = section.querySelector(".work-text-content");
-
-      // Outer container clip-path and rotation reveal
-      gsap.fromTo(img,
-        { 
-          clipPath: "polygon(50% 20%, 80% 50%, 50% 80%, 20% 50%)", 
-          scale: 0.85,
-          rotation: 4
-        },
-        {
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          scale: 1,
-          rotation: 0,
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "top top",
-            scrub: 1.2,
-          }
-        }
-      );
-
-      // Inner video parallax scaling
-      if (videoAsset) {
-        gsap.fromTo(videoAsset,
-          { scale: 1.6 },
-          {
-            scale: 1,
-            scrollTrigger: {
-              trigger: section,
-              start: "top bottom",
-              end: "top top",
-              scrub: 1.2,
-            }
-          }
-        );
-      }
-
-      // 4. KINETIC SKEW TEXT REVEAL
-      if (textBlock) {
-        gsap.fromTo(textBlock,
-          { y: 150, opacity: 0, skewY: 8 },
-          {
-            y: 0,
-            opacity: 1,
-            skewY: 0,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: section,
-              start: "top 85%",
-              end: "top 20%",
-              scrub: 1,
-            }
-          }
-        );
-      }
-
-      // 4. VIDEO PLAYBACK CONTROL
-      const video = section.querySelector("video");
-      if (video) {
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top 80%",
-          end: "bottom 20%",
-          onEnter: () => { video.play().catch(() => { }); },
-          onEnterBack: () => { video.play().catch(() => { }); },
-          onLeave: () => video.pause(),
-          onLeaveBack: () => video.pause(),
-        });
       }
     });
+
+    // =====================================
+    // Transition 0 -> 1
+    // =====================================
+    tl.to(cards[1] as Element, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, 0);
+    // Push Card 0 down for parallax depth
+    tl.to((cards[0] as Element).querySelector(".project-content"), { y: "20vh", opacity: 0.5, duration: 1, ease: "power2.inOut" }, 0);
+    // Pull Card 1 up from bottom
+    tl.fromTo((cards[1] as Element).querySelector(".project-content"), { y: "-20vh" }, { y: "0vh", duration: 1, ease: "power2.inOut" }, 0);
+
+    // =====================================
+    // Transition 1 -> 2
+    // =====================================
+    tl.to(cards[2] as Element, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power2.inOut" }, 1);
+    tl.to((cards[1] as Element).querySelector(".project-content"), { y: "20vh", opacity: 0.5, duration: 1, ease: "power2.inOut" }, 1);
+    tl.fromTo((cards[2] as Element).querySelector(".project-content"), { y: "-20vh" }, { y: "0vh", duration: 1, ease: "power2.inOut" }, 1);
+
+    // =====================================
+    // VIDEO PLAYBACK LOGIC
+    // =====================================
+    tl.eventCallback("onUpdate", () => {
+      const progress = tl.progress();
+      cards.forEach((card: any, index) => {
+        const video = card.querySelector(".main-video") as HTMLVideoElement;
+        const bgVideo = card.querySelector(".bg-video") as HTMLVideoElement;
+        
+        let isActive = false;
+        if (index === 0 && progress < 0.3) isActive = true;
+        if (index === 1 && progress > 0.2 && progress < 0.8) isActive = true;
+        if (index === 2 && progress > 0.7) isActive = true;
+
+        if (isActive) {
+          if (video?.paused) video.play().catch(() => {});
+          if (bgVideo?.paused) bgVideo.play().catch(() => {});
+        } else {
+          if (video && !video.paused) video.pause();
+          if (bgVideo && !bgVideo.paused) bgVideo.pause();
+        }
+      });
+    });
+
   }, { scope: container });
 
   return (
-    <section ref={container} className="bg-[#fcfcfc] overflow-hidden relative">
-
-      {/* --- RESPONSIVE HEADER --- */}
-      <div className=" flex flex-col justify-center px-6 md:px-20 bg-[#fcfcfc] relative z-20 border-b border-black/5">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <div className="flex items-center gap-3 mt-20 mb-5">
-            <span className="w-2 h-2 bg-[#3533CD] rounded-full animate-pulse"></span>
-            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-black/40">Portfolio Archive 2026</p>
-          </div>
-
-          <h2 className="font-display text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-20">
-            <span className="text-[#3533CD]">Selected</span> <br />
-            <span className="text-transparent" style={{ WebkitTextStroke: "1px black" }}>Archive</span>
-          </h2>
-
-        </div>
+    <section 
+      ref={container} 
+      id="work"
+      className="relative h-screen w-full bg-[#f8f9fa]" 
+    >
+      
+      {/* Static HUD / Header */}
+      <div className="absolute top-8 left-6 md:top-12 md:left-12 z-50 pointer-events-none text-black">
+         <h2 className="font-display font-black uppercase text-xl md:text-2xl tracking-widest text-[#3533CD]">
+           Archive
+         </h2>
+         <div className="flex items-center gap-3 mt-2">
+            <span className="w-1.5 h-1.5 bg-[#3533CD] rounded-full animate-pulse"></span>
+            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-black/50">Curated Works</p>
+         </div>
       </div>
 
-      {/* --- WORK SECTIONS --- */}
-      {projects.map((project) => (
-        <div
-          key={project.id}
-          className="work-section relative min-h-[100svh] lg:h-screen w-full flex items-center justify-center bg-[#fcfcfc] py-20 lg:py-0"
-        >
-          {/* AMBIENT BLOBS */}
-          <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-[#3533CD]/5 blur-[100px] rounded-full pointer-events-none"></div>
-
-          {/* KINETIC BACKGROUND TEXT */}
-          <h3 className="work-title absolute top-1/2 left-0 -translate-y-1/2 whitespace-nowrap font-display text-[25vw] font-black uppercase text-transparent z-0 select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(0,0,0,0.05)" }}>
-            {project.title} • {project.id} • {project.title} • {project.id} •
-          </h3>
-
-          <div className="relative z-10 w-full max-w-7xl px-4 md:px-12 grid grid-cols-12 gap-6 md:gap-16 items-center">
-
-            {/* --- LEFT: THE CARD PIECE --- */}
-            <div className="col-span-12 lg:col-span-8 cursor-pointer">
-              <div className="work-img-container w-full h-full">
-                <div className="relative group active:scale-[0.96] md:hover:scale-[1.02] md:hover:-rotate-1 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
-                  {/* Industrial Detailing */}
-                  <div className="absolute -top-3 -left-3 flex gap-1 z-20">
-                    <div className="w-1.5 h-1.5 bg-[#3533CD]"></div>
-                    <div className="w-6 h-[1px] bg-black/10 mt-[3px]"></div>
-                  </div>
-
-                  {/* Main Image Wrapper */}
-                  <div className="relative aspect-video lg:aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.2)] border border-black/5 bg-white group-hover:shadow-[0_50px_100px_-20px_rgba(53,51,205,0.3)] transition-shadow duration-700">
-                    <video
-                      src={project.video}
-                      muted
-                      loop
-                      playsInline
-                      className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
-                    />
-
-
-
-                  <div className="absolute bottom-6 right-6 z-20">
-                    <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-sm group-hover:bg-[#3533CD] group-hover:border-[#3533CD] transition-all duration-500">
-                      <Plus className="text-white w-6 h-6 transition-transform group-hover:rotate-90" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+      {/* Editorial Curtain Deck */}
+      <div className="absolute inset-0">
+        {projects.map((project) => (
+          <div 
+            key={project.id} 
+            className="project-card absolute inset-0 overflow-hidden bg-[#f8f9fa]"
+          >
+            {/* Ambient Glow tied directly to this card */}
+            <div className="absolute inset-0 -z-20 pointer-events-none overflow-hidden">
+              <video 
+                src={project.video} 
+                muted loop playsInline 
+                className="bg-video absolute inset-0 w-full h-full object-cover" 
+                style={{ filter: "blur(120px) saturate(200%) opacity(0.5)", transform: "scale(1.2)" }} 
+              />
+              <div className="absolute inset-0 bg-[#f8f9fa]/70 backdrop-blur-[50px]"></div>
             </div>
 
-            {/* --- RIGHT: CONTENT PIECE --- */}
-            <div className="col-span-12 lg:col-span-4 flex flex-col gap-4 md:gap-8 mt-4 lg:mt-0 lg:pl-4 work-text-content">
-              <div className="flex items-center justify-between lg:justify-start lg:gap-8">
-                <div className="flex flex-col">
-                  <span className="font-display text-6xl font-black text-black leading-none italic">
-                    {project.id}<span className="text-[#3533CD]">.</span>
-                  </span>
-                </div>
-
+            {/* Content Wrapper for Parallax */}
+            <div className="project-content w-full h-full relative">
+              
+              {/* Maximalist Background Number */}
+              <div className="absolute top-1/2 -translate-y-1/2 -left-10 md:-left-4 lg:left-12 -z-10 font-display font-black text-[50vw] md:text-[40vw] lg:text-[35vw] leading-none text-black/[0.03] select-none pointer-events-none tracking-tighter">
+                {project.id}
               </div>
 
-              <div className="space-y-4 md:space-y-6">
-                <h4 className="font-display text-4xl md:text-5xl lg:text-5xl xl:text-5xl font-black uppercase tracking-tighter text-black leading-[0.85] transition-all">
-                  {project.title}
-                </h4>
-                <div className="flex gap-4 items-start">
-                  <Info size={16} className="text-[#3533CD] mt-1 shrink-0" />
-                  <p className="font-sans text-black/60 text-sm md:text-base leading-relaxed max-w-sm">
-                    {project.desc}
-                  </p>
-                </div>
+              {/* Left-Aligned Video Frame */}
+              <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 w-[90vw] md:w-[60vw] lg:w-[50vw] aspect-[4/5] md:aspect-video lg:aspect-[16/10] rounded-2xl md:rounded-[2rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.1)] bg-white group border border-black/5">
+                <video 
+                  src={project.video} 
+                  muted loop playsInline 
+                  className="main-video w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                
+                {/* Dark Overlay on Hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 pointer-events-none"></div>
+                
+                {/* Hover Button */}
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 cursor-pointer"
+                >
+                   <div className="bg-white text-black px-6 py-4 rounded-full font-mono text-[11px] uppercase tracking-widest font-bold flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-2xl">
+                      View Full Project <ArrowUpRight size={14} className="text-[#3533CD]" />
+                   </div>
+                </a>
               </div>
 
-              {/* ACTION BUTTON */}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="group relative flex items-center justify-between w-full max-w-[280px] px-8 py-5 bg-black rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] shadow-xl"
-              >
-                {/* Liquid Fill Effect */}
-                <div className="absolute inset-0 w-0 h-full bg-[#3533CD] transition-all duration-500 ease-out group-hover:w-full"></div>
+              {/* Bottom-Right Typography */}
+              <div className="absolute bottom-8 right-6 md:bottom-16 md:right-16 lg:bottom-24 lg:right-24 flex flex-col items-end text-right z-20 pointer-events-auto max-w-[85vw] md:max-w-[40vw] lg:max-w-[35vw]">
+                 <span className="font-mono text-[#3533CD] text-xs md:text-sm tracking-widest mb-2 md:mb-4 uppercase font-bold">
+                   Project // {project.year}
+                 </span>
+                 
+                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-[4rem] font-black uppercase tracking-tighter text-black leading-[0.9] text-balance">
+                   {project.title}
+                 </h2>
+                 
+                 <p className="font-sans text-black/60 text-sm md:text-base lg:text-lg mt-3 md:mt-4 max-w-xs md:max-w-sm font-light leading-relaxed">
+                   {project.desc}
+                 </p>
+                 
+                 <a 
+                   href={project.link} 
+                   target="_blank" 
+                   rel="noreferrer" 
+                   className="mt-6 md:mt-8 flex items-center gap-3 border border-black/20 rounded-full px-6 py-3 md:px-8 md:py-4 bg-white/50 backdrop-blur-md text-black hover:bg-black hover:text-white transition-colors uppercase tracking-widest text-[10px] md:text-xs font-bold"
+                 >
+                   Launch Project <ArrowUpRight size={14} className="group-hover:rotate-45 transition-transform" />
+                 </a>
+              </div>
 
-                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px] text-white transition-colors duration-500">
-                  Launch Project
-                </span>
-
-                <div className="relative z-10 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white backdrop-blur-md group-hover:bg-white group-hover:text-[#3533CD] transition-all duration-500 transform group-hover:rotate-45">
-                  <ArrowUpRight size={18} />
-                </div>
-              </a>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
     </section>
   );
