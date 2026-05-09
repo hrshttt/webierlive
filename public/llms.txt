@@ -1,0 +1,27 @@
+# Webier Studio
+
+> A premium web design and digital studio building high-performance websites, SEO strategies, and AI-powered systems for businesses in the USA.
+
+## About
+Webier Studio is a focused two-person digital agency. We blend strategy with design to create websites that don't just look good — they perform. Est. 2025.
+
+## Services
+- Web Development (React / Next.js / TypeScript)
+- SEO & Performance Optimization
+- AI Chatbot Integration & Automation
+- Branding & Visual Identity
+- Google & Meta Ads Management
+
+## Work
+- East Pointe (eastpointekc.com): Luxury lake cabin experience near Kansas City, Missouri. Full website design and development.
+- Korden Technologies (korden.tech): Semiconductor and critical component sourcing brand. B2B website design and development.
+- SOZO Inc. (sozocorporate.com): Independent premium streetwear brand. E-commerce and brand website.
+
+## Target Clients
+US-based businesses — especially hospitality, short-term rentals, local service businesses, and startups looking for premium digital presence.
+
+## Contact
+Email: contact@webierstudio.com
+Website: https://webierstudio.com
+Instagram: @webierstudio
+LinkedIn: linkedin.com/company/webierstudio

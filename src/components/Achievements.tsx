@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef } from "react";
 import { Trophy, Globe, Users, Zap, Star, ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
@@ -25,7 +26,7 @@ const stats: Stat[] = [
   {
     id: "metric-01",
     type: "primary",
-    value: 40,
+    value: 15,
     suffix: "+",
     label: "Projects Delivered",
     sub: "Websites & Apps",
@@ -36,7 +37,7 @@ const stats: Stat[] = [
   {
     id: "metric-02",
     type: "standard",
-    value: 12,
+    value: 10,
     suffix: "+",
     label: "Clients Partnered",
     sub: "Across Industries",
@@ -47,7 +48,7 @@ const stats: Stat[] = [
   {
     id: "metric-03",
     type: "standard",
-    value: 3,
+    value: 2,
     suffix: " yrs",
     label: "Experience",
     sub: "Design + Development",
@@ -58,18 +59,18 @@ const stats: Stat[] = [
   {
     id: "metric-04",
     type: "wide",
-    value: 3,
+    value: 4,
     suffix: "+",
     label: "Countries Reached",
     sub: "Serving Globally",
-    desc: "Our work powers businesses across multiple time zones—India, US & Russia.",
+    desc: "Our work powers businesses across multiple time zones—US, UK, UAE & India.",
     colSpan: "md:col-span-2",
     icon: Globe,
   },
   {
     id: "metric-05",
     type: "standard",
-    value: 96,
+    value: 100,
     suffix: "%",
     label: "Client Satisfaction",
     sub: "Retention Success",
@@ -80,7 +81,7 @@ const stats: Stat[] = [
   {
     id: "metric-06",
     type: "standard",
-    value: 5,
+    value: 2,
     suffix: "+",
     label: "Core Team",
     sub: "Designers & Developers",

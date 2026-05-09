@@ -1,5 +1,6 @@
+"use client";
 import React, { useRef, useState } from "react";
-import { ArrowUpRight, Instagram, Linkedin } from "lucide-react";
+import { ArrowUpRight, Instagram, Linkedin, Loader2 } from "lucide-react";
 
 // --- Types ---
 interface SocialLinkProps {
@@ -26,61 +27,90 @@ const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
   </a>
 );
 
-// --- Sub Component: Magnetic Button (Updated for WhatsApp) ---
-const MagneticButton = () => {
-  // Changed Ref type to HTMLAnchorElement since it's now a link
-  const btnRef = useRef<HTMLAnchorElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+// --- Form Component ---
+const ContactForm = () => {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!btnRef.current) return;
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('loading');
 
-    const { clientX, clientY } = e;
-    const { left, top, width, height } = btnRef.current.getBoundingClientRect();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
 
-    // Calculate center
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    // Calculate distance from center
-    const dist = { x: clientX - centerX, y: clientY - centerY };
-
-    // Magnetic Pull Strength (0.4 is the intensity)
-    setPosition({ x: dist.x * 0.4, y: dist.y * 0.4 });
-  };
-
-  const handleMouseLeave = () => {
-    setPosition({ x: 0, y: 0 });
-  };
+      setStatus(res.ok ? 'success' : 'error');
+    } catch {
+      setStatus('error');
+    }
+  }
 
   return (
-    <a
-      href="https://wa.me/918209965066?text=Hi%20Webier,%20I%20want%20to%20start%20a%20project."
-      target="_blank"
-      rel="noopener noreferrer"
-      ref={btnRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: `translate(${position.x}px, ${position.y}px)`,
-        transition: "transform 0.1s ease-out",
-      }}
-      className="group relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-[#1a1a1a] text-white flex items-center justify-center cursor-pointer hover:bg-[#25D366] transition-colors duration-500 ease-out z-20"
-    >
-      <div className="relative z-10 flex flex-col items-center gap-2 pointer-events-none">
-        <span className="font-display text-xl md:text-2xl font-bold uppercase tracking-widest group-hover:scale-110 transition-transform duration-300 text-center">
-          Start A<br />
-          Project
-        </span>
-        <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-300" />
+    <form onSubmit={handleSubmit} className="w-full max-w-3xl mx-auto flex flex-col gap-8 text-left mt-16 z-20 relative bg-white/50 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-black/5 shadow-xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-col gap-2">
+          <label className="font-mono text-xs uppercase tracking-widest text-black/60">Name</label>
+          <input required name="name" type="text" className="border-b border-black/20 bg-transparent py-3 text-lg focus:outline-none focus:border-[#3533cd] transition-colors" placeholder="John Doe" />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="font-mono text-xs uppercase tracking-widest text-black/60">Email</label>
+          <input required name="email" type="email" className="border-b border-black/20 bg-transparent py-3 text-lg focus:outline-none focus:border-[#3533cd] transition-colors" placeholder="john@example.com" />
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-col gap-2">
+          <label className="font-mono text-xs uppercase tracking-widest text-black/60">Service Interested In</label>
+          <select required name="service" defaultValue="" className="border-b border-black/20 bg-transparent py-3 text-lg focus:outline-none focus:border-[#3533cd] transition-colors appearance-none">
+            <option value="" disabled>Select a service</option>
+            <option value="Web Development">Web Development</option>
+            <option value="SEO">SEO</option>
+            <option value="AI Automation">AI Automation</option>
+            <option value="Branding">Branding</option>
+            <option value="Google & Meta Ads">Google & Meta Ads</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="font-mono text-xs uppercase tracking-widest text-black/60">Budget Range</label>
+          <select required name="budget" defaultValue="" className="border-b border-black/20 bg-transparent py-3 text-lg focus:outline-none focus:border-[#3533cd] transition-colors appearance-none">
+            <option value="" disabled>Select a budget</option>
+            <option value="Under $500">Under $500</option>
+            <option value="$500–$1,500">$500–$1,500</option>
+            <option value="$1,500–$5,000">$1,500–$5,000</option>
+            <option value="$5,000+">$5,000+</option>
+          </select>
+        </div>
       </div>
 
-      {/* Ripple Effect on Hover */}
-      <div className="absolute inset-0 rounded-full border border-black/10 scale-125 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-out" />
-      <div className="absolute inset-0 rounded-full border border-black/5 scale-150 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 delay-75 ease-out" />
-    </a>
-  );
-};
+      <div className="flex flex-col gap-2">
+        <label className="font-mono text-xs uppercase tracking-widest text-black/60">Message</label>
+        <textarea required name="message" rows={4} className="border-b border-black/20 bg-transparent py-3 text-lg focus:outline-none focus:border-[#3533cd] transition-colors resize-none" placeholder="Tell us about your project..."></textarea>
+      </div>
+
+      <button type="submit" disabled={status === 'loading' || status === 'success'} className="mt-4 bg-[#1a1a1a] hover:bg-[#3533cd] text-white py-5 rounded-full font-mono text-sm uppercase tracking-widest transition-colors flex items-center justify-center gap-2 group">
+        {status === 'loading' && <Loader2 className="animate-spin" size={16} />}
+        {status === 'idle' && (
+          <>
+            Send Message
+            <ArrowUpRight size={16} className="group-hover:rotate-45 transition-transform" />
+          </>
+        )}
+        {status === 'success' && 'Message Sent ✓'}
+        {status === 'error' && 'Try Again'}
+      </button>
+      
+      {status === 'success' && <p className="text-green-600 text-center font-mono text-sm mt-2">Message sent! We'll be in touch soon.</p>}
+      {status === 'error' && <p className="text-red-600 text-center font-mono text-sm mt-2">Something went wrong. Email us directly.</p>}
+    </form>
+  )
+}
 
 // --- Main Component ---
 const Contact = () => {
@@ -88,16 +118,16 @@ const Contact = () => {
 
   return (
     <section
-      className="relative w-full bg-white text-black min-h-screen flex flex-col justify-between px-4 md:px-8 lg:px-12 pt-32 pb-8 overflow-hidden font-sans"
+      className="relative w-full bg-[#fcfcfc] text-black min-h-screen flex flex-col justify-between px-4 md:px-8 lg:px-12 pt-32 pb-8 overflow-hidden font-sans"
       id="contact"
     >
       {/* Background Grid (Subtle) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:6rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-[1600px] mx-auto flex-1 flex flex-col justify-center items-center text-center">
         {/* Animated Badge */}
-        <div className="mb-12 overflow-hidden">
+        <div className="mb-8 overflow-hidden">
           <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 bg-white/50 backdrop-blur-sm animate-fade-in-up">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3533cd] opacity-75"></span>
@@ -110,7 +140,7 @@ const Contact = () => {
         </div>
 
         {/* Headline */}
-        <h2 className="font-display text-[12vw] md:text-[11rem] font-black leading-[0.8] tracking-tighter uppercase text-[#3533CD] mb-8 mix-blend-difference">
+        <h2 className="font-display text-[12vw] md:text-[8rem] lg:text-[10rem] font-black leading-[0.85] tracking-tighter uppercase text-[#3533CD] mb-8 mix-blend-difference">
           Let's{" "}
           <span
             className="text-transparent"
@@ -123,9 +153,9 @@ const Contact = () => {
         {/* Magnetic Email Interaction */}
         <a
           href={`mailto:${email}`}
-          className="group relative cursor-pointer inline-flex items-center justify-center gap-4 md:gap-8 hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+          className="group relative cursor-pointer inline-flex items-center justify-center gap-4 md:gap-8 hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] mb-8"
         >
-          <h3 className="font-sans text-2xl md:text-6xl font-light text-black/80 group-hover:text-[#3533CD] transition-colors duration-300">
+          <h3 className="font-sans text-2xl md:text-5xl font-light text-black/80 group-hover:text-[#3533CD] transition-colors duration-300">
             {email}
           </h3>
 
@@ -142,14 +172,12 @@ const Contact = () => {
           </div>
         </a>
 
-        {/* Magnetic Button Area */}
-        <div className="mt-24 mb-24 md:mb-0 w-full flex justify-center h-[200px] items-center">
-          <MagneticButton />
-        </div>
+        {/* Contact Form */}
+        <ContactForm />
       </div>
 
       {/* Footer / Socials */}
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto border-t border-black/10 pt-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto border-t border-black/10 pt-12 mt-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
         <div className="flex flex-col gap-4">
           <span className="font-mono text-xs uppercase tracking-widest text-black/40">
             Socials

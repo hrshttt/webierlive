@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useLayoutEffect, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -35,9 +36,9 @@ const Philosophy = () => {
         .map(
           (word: string) =>
             // Maine "transition-colors" hata diya kyunki ab hover effect nahi hai
-            `<span class="word inline-block opacity-10 cursor-default" style="transform-origin: center bottom;">${word}&nbsp;</span>`
+            `<span class="word inline-block opacity-10 cursor-default" style="transform-origin: center bottom;">${word}</span>`
         )
-        .join("");
+        .join(" ");
 
       const wordElements = textElement.querySelectorAll<HTMLSpanElement>(".word");
 
