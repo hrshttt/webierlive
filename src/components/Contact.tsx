@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { ArrowUpRight, Instagram, Linkedin, Loader2 } from "lucide-react";
+import { ArrowUpRight, Instagram, Linkedin, Loader2, MessageCircle } from "lucide-react";
 
 // --- Types ---
 interface SocialLinkProps {
@@ -192,6 +192,11 @@ const Contact = () => {
               href="https://www.linkedin.com/company/webierdev/"
               icon={<Linkedin size={20} />}
               label="LinkedIn"
+            />
+            <SocialLink
+              href="https://wa.me/918209965066?text=Hi%20Webier,%20I%20want%20to%20start%20a%20project."
+              icon={<MessageCircle size={20} />}
+              label="WhatsApp"
             />
           </div>
         </div>
