@@ -134,8 +134,8 @@ const SelectedWorks = () => {
           <div className="relative z-10 w-full max-w-7xl px-4 md:px-12 grid grid-cols-12 gap-6 md:gap-16 items-center">
 
             {/* --- LEFT: THE CARD PIECE --- */}
-            <div className="col-span-12 lg:col-span-8">
-              <div className="work-img-container relative group">
+            <div className="col-span-12 lg:col-span-8 cursor-pointer">
+              <div className="work-img-container relative group active:scale-[0.98] transition-transform duration-500 ease-out">
                 {/* Industrial Detailing */}
                 <div className="absolute -top-3 -left-3 flex gap-1">
                   <div className="w-1.5 h-1.5 bg-[#3533CD]"></div>

@@ -94,7 +94,7 @@ const ContactForm = () => {
         <textarea required name="message" rows={4} className="border-b border-black/20 bg-transparent py-3 text-lg focus:outline-none focus:border-[#3533cd] transition-colors resize-none" placeholder="Tell us about your project..."></textarea>
       </div>
 
-      <button type="submit" disabled={status === 'loading' || status === 'success'} className="mt-4 bg-[#1a1a1a] hover:bg-[#3533cd] text-white py-5 rounded-full font-mono text-sm uppercase tracking-widest transition-colors flex items-center justify-center gap-2 group">
+      <button type="submit" disabled={status === 'loading' || status === 'success'} className="mt-4 bg-[#1a1a1a] hover:bg-[#3533cd] active:scale-[0.98] active:bg-[#2a28a3] text-white py-5 rounded-full font-mono text-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group">
         {status === 'loading' && <Loader2 className="animate-spin" size={16} />}
         {status === 'idle' && (
           <>
@@ -153,14 +153,14 @@ const Contact = () => {
         {/* Magnetic Email Interaction */}
         <a
           href={`mailto:${email}`}
-          className="group relative cursor-pointer inline-flex items-center justify-center gap-4 md:gap-8 hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] mb-8"
+          className="group relative cursor-pointer inline-flex items-center justify-center gap-4 md:gap-8 hover:scale-105 active:scale-[0.95] transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] mb-8"
         >
           <h3 className="font-sans text-2xl md:text-5xl font-light text-black/80 group-hover:text-[#3533CD] transition-colors duration-300">
             {email}
           </h3>
 
           {/* Expandable Action Button */}
-          <div className="relative h-12 flex items-center justify-center rounded-full bg-[#f6f6fa] group-hover:bg-[#3533CD] transition-all duration-500 w-12 group-hover:w-48 overflow-hidden">
+          <div className="relative h-12 flex items-center justify-center rounded-full bg-[#f6f6fa] group-hover:bg-[#3533CD] group-active:bg-[#2a28a3] transition-all duration-500 w-12 group-hover:w-48 overflow-hidden">
             <ArrowUpRight
               size={20}
               className="absolute text-black/40 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-4 group-hover:scale-0"

@@ -266,17 +266,17 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Sub-content Container */}
-        <div className="mt-16 md:mt-24 flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-8 max-w-4xl mix-blend-multiply">
-          <h2 className="hero-tagline font-display font-bold text-lg md:text-xl text-accent2 tracking-[0.25em] uppercase md:w-1/3 text-right pt-2">
+        <div className="mt-12 md:mt-24 flex flex-row items-start text-left gap-4 md:gap-8 max-w-4xl mix-blend-multiply px-4 w-full justify-center">
+          <h2 className="hero-tagline font-display font-bold text-[10px] sm:text-xs md:text-xl text-accent2 tracking-[0.15em] md:tracking-[0.25em] uppercase w-[35%] md:w-1/3 text-right pt-1 md:pt-2">
             Beyond Digital
             <br />
             Boundaries
           </h2>
 
-          <div className="hidden md:block w-[1px] h-20 bg-black/20 hero-desc-container"></div>
+          <div className="block w-[1px] h-16 md:h-20 bg-black/20 hero-desc-container"></div>
 
-          <div className="hero-desc-container md:w-2/3 pl-4 md:border-l-0">
-            <p className="font-display font-medium text-lg md:text-2xl text-black leading-relaxed">
+          <div className="hero-desc-container w-[65%] md:w-2/3 pl-2 md:pl-4">
+            <p className="font-display font-medium text-xs sm:text-sm md:text-2xl text-black leading-relaxed">
               We exist to disrupt the ordinary. Crafting immersive digital
               ecosystems where strategy meets pure aesthetic chaos.
             </p>
