@@ -336,6 +336,28 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
 
+        {/* ── Google Analytics (GA4) ────────────────────────────────────── */}
+        <Script
+          id="ga4-gtag"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-VVVMME8Q0G"
+        />
+        <Script
+          id="ga4-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-VVVMME8Q0G', {
+                page_path: window.location.pathname,
+                send_page_view: true,
+              });
+            `,
+          }}
+        />
+
         {/* ── 3rd-Party Scripts (deferred) ─────────────────────────────── */}
         <Script
           id="vtag-ai-js"
