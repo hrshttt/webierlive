@@ -87,7 +87,7 @@ export const metadata: Metadata = {
 
   // ── Verification (add your codes here when ready) ─────────────────────────
   verification: {
-    google: "YOUR_GOOGLE_SITE_VERIFICATION_CODE", // Replace with Search Console code
+    google: "PYZGdyjSiSCAgF1s9-x66uIuKBYLstj5ctaXg98j2Zs", // Replace with Search Console code
     // yandex: 'YOUR_YANDEX_CODE',
     // bing: 'YOUR_BING_CODE',
   },
@@ -360,7 +360,7 @@ export default function RootLayout({
       <body className="bg-bg text-[#1a1a1a] min-h-screen relative font-sans selection:bg-[#3533cd] selection:text-white">
         {children}
         {/* Google Analytics — @next/third-parties official integration */}
-        <GoogleAnalytics gaId="G-VVVMME8Q0G" />
+        <GoogleAnalytics gaId="G-VVVMWE8Q0G" />
       </body>
     </html>
   );
