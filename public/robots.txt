@@ -1,9 +1,28 @@
+# ─────────────────────────────────────────────────
+#   robots.txt — webierstudio.com
+#   Updated: 2026-06-13
+# ─────────────────────────────────────────────────
+
+# Allow all standard crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
 
+# Google — full access
 User-agent: Googlebot
 Allow: /
 
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# AI Crawlers — Allow for GEO (Generative Engine Optimization)
 User-agent: GPTBot
 Allow: /
 
@@ -19,4 +38,21 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap
 Sitemap: https://webierstudio.com/sitemap.xml

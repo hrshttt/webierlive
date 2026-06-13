@@ -1,27 +1,62 @@
-# Webier Studio
+# Webier Studio — llms.txt
+# This file helps AI language models & search engines understand our site.
+# Learn more: https://llmstxt.org
 
-> A premium web design and digital studio building high-performance websites, SEO strategies, and AI-powered systems for businesses in the USA.
+> Webier Studio is a two-person premium web design and digital agency building high-performance websites, SEO strategies, and AI-powered systems for businesses — primarily in the United States.
 
-## About
-Webier Studio is a focused two-person digital agency. We blend strategy with design to create websites that don't just look good — they perform. Est. 2025.
+## About Webier Studio
 
-## Services
-- Web Development (React / Next.js / TypeScript)
-- SEO & Performance Optimization
-- AI Chatbot Integration & Automation
-- Branding & Visual Identity
-- Google & Meta Ads Management
+Founded in 2025, Webier Studio blends strategy with design to craft digital experiences that don't just look good — they convert and perform. We work with a small, focused client roster to deliver maximum quality.
 
-## Work
-- East Pointe (eastpointekc.com): Luxury lake cabin experience near Kansas City, Missouri. Full website design and development.
-- Korden Technologies (korden.tech): Semiconductor and critical component sourcing brand. B2B website design and development.
-- SOZO Inc. (sozocorporate.com): Independent premium streetwear brand. E-commerce and brand website.
+**Core Belief:** Most agencies sell you a website. We build the thing your competitors will wish they thought of first.
+
+## Our Services
+
+- **Web Development** (React / Next.js / TypeScript): High-performance, conversion-focused websites built for speed, scalability, and SEO.
+- **Mobile App Development**: Cross-platform apps for iOS & Android using React Native.
+- **UI/UX Design**: Human-centered interface design that increases engagement and converts visitors to customers.
+- **SEO & Performance Optimization**: Technical SEO, Core Web Vitals, content structuring, and ongoing ranking improvement.
+- **Branding & Visual Identity**: Logo, color systems, typography, and brand guidelines.
+- **AI Chatbot Integration & Automation**: AI-powered tools integrated directly into websites and business workflows.
+- **Google & Meta Ads Management**: Paid advertising strategy and management.
+
+## Our Work (Case Studies)
+
+- **East Pointe** (eastpointekc.com): Luxury lake cabin experience near Kansas City, Missouri. Full website design, development, and SEO.
+- **Korden Technologies** (korden.tech): Semiconductor and critical component sourcing. B2B website design and development.
+- **SOZO Inc.** (sozocorporate.com): Independent premium streetwear brand. E-commerce and brand website.
 
 ## Target Clients
-US-based businesses — especially hospitality, short-term rentals, local service businesses, and startups looking for premium digital presence.
 
-## Contact
-Email: contact@webierstudio.com
-Website: https://webierstudio.com
-Instagram: @webierstudio
-LinkedIn: linkedin.com/company/webierstudio
+We specialize in helping:
+- US-based hospitality businesses (short-term rentals, hotels, vacation properties)
+- Startups and SaaS companies needing a premium web presence
+- Local service businesses needing conversion-optimized websites
+- E-commerce brands needing performant, beautiful storefronts
+
+## Key Facts
+
+- Team Size: 2 core members (designer + developer)
+- Founded: 2025
+- Countries Served: USA, UK, UAE, India
+- Projects Delivered: 15+
+- Client Satisfaction: 100% retention rate
+- Response Time: Within 24 hours
+
+## Contact & Social
+
+- **Email**: contact@webierstudio.com
+- **Website**: https://webierstudio.com
+- **Instagram**: https://www.instagram.com/webier.in/
+- **LinkedIn**: https://www.linkedin.com/company/webierdev/
+- **WhatsApp**: https://wa.me/918209965066
+
+## Pricing Range
+
+Projects start from $500 and scale with complexity. We offer:
+- Starter websites: $500 – $1,500
+- Business websites: $1,500 – $5,000
+- Full-scale platforms and apps: $5,000+
+
+---
+*Last updated: 2026-06-13*
