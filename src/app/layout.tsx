@@ -100,6 +100,15 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
 
   // ── Category ─────────────────────────────────────────────────────────────
   category: "Web Design & Digital Agency",
@@ -116,7 +125,7 @@ const localBusinessSchema = {
   "@id": "https://webierstudio.com/#business",
   name: "Webier Studio",
   url: "https://webierstudio.com",
-  logo: "https://webierstudio.com/logo.png",
+  logo: "https://webierstudio.com/webierLogo.webp",
   image: "https://webierstudio.com/og-image.png",
   email: "contact@webierstudio.com",
   description:
@@ -316,8 +325,8 @@ export default function RootLayout({
         />
 
         {/* ── Favicon / PWA Icons ─────────────────────────────────────── */}
-        <link rel="icon" href="/og-image.png" type="image/png" />
-        <link rel="shortcut icon" href="/og-image.png" type="image/png" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
 

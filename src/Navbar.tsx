@@ -1,12 +1,16 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
 // Links configuration
 // ENSURE THESE IDS MATCH YOUR SECTION IDS EXACTLY
-const navLinks = ["About", "Services", "Process", "Work", "Impact"];
+const navLinks = ["About", "Services", "Process", "Work", "Impact", "Blog"];
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const navRef = useRef<HTMLElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -60,10 +64,12 @@ const Navbar = () => {
 
   // --- 2. Active Section Observer ---
   useEffect(() => {
+    if (!isHome) return;
+
     // Add 'hero' and 'contact' manually as they aren't in navLinks
     const sections = [
       "hero",
-      ...navLinks.map((link) => link.toLowerCase()),
+      ...navLinks.filter(l => l.toLowerCase() !== "blog").map((link) => link.toLowerCase()),
       "contact",
     ];
 
@@ -82,7 +88,7 @@ const Navbar = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isHome]);
 
   // --- 3. Navbar Show/Hide Animation ---
   useEffect(() => {
@@ -158,7 +164,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <a
-          href="#hero"
+          href={isHome ? "#hero" : "/#hero"}
           onClick={handleNavClick}
           className="pl-2 md:pl-6 pr-6 relative z-10 group/logo cursor-pointer"
           aria-label="Webier Home"
@@ -174,11 +180,19 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-1">
           {navLinks.map((item) => {
-            const isActive = activeSection === item.toLowerCase();
+            const isBlogLink = item.toLowerCase() === "blog";
+            const isActive = isBlogLink 
+              ? pathname.startsWith("/blog")
+              : (isHome && activeSection === item.toLowerCase());
+            
+            const href = isBlogLink
+              ? "/blog"
+              : (isHome ? `#${item.toLowerCase()}` : `/#${item.toLowerCase()}`);
+
             return (
               <MagneticItem key={item}>
                 <a
-                  href={`#${item.toLowerCase()}`}
+                  href={href}
                   onClick={handleNavClick}
                   className="relative px-5 py-3 rounded-full overflow-hidden group/btn block"
                 >
@@ -211,7 +225,7 @@ const Navbar = () => {
         {/* Desktop CTA */}
         <div className="pl-4 pr-2 hidden md:block">
           <a
-            href="#contact"
+            href={isHome ? "#contact" : "/#contact"}
             onClick={handleNavClick}
             className="block relative overflow-hidden bg-black text-white px-6 py-2.5 rounded-full text-[10px] uppercase font-bold tracking-widest group hover:shadow-lg transition-all"
           >
@@ -252,32 +266,43 @@ const Navbar = () => {
         className="md:hidden pointer-events-auto absolute top-full mt-2 w-[90%] max-w-[300px] bg-white rounded-2xl shadow-2xl shadow-black/10 border border-black/5 overflow-hidden opacity-0 invisible origin-top"
       >
         <div className="flex flex-col p-2">
-          {navLinks.map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              onClick={handleNavClick}
-              className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors duration-200"
-            >
-              <span
-                className={`text-sm font-bold uppercase tracking-wider ${
-                  activeSection === link.toLowerCase()
-                    ? "text-[#3533cd]"
-                    : "text-gray-800"
-                }`}
+          {navLinks.map((link) => {
+            const isBlogLink = link.toLowerCase() === "blog";
+            const isActive = isBlogLink 
+              ? pathname.startsWith("/blog")
+              : (isHome && activeSection === link.toLowerCase());
+            
+            const href = isBlogLink
+              ? "/blog"
+              : (isHome ? `#${link.toLowerCase()}` : `/#${link.toLowerCase()}`);
+
+            return (
+              <a
+                key={link}
+                href={href}
+                onClick={handleNavClick}
+                className="group flex items-center justify-between px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors duration-200"
               >
-                {link}
-              </span>
-              <span className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-[#3533cd] text-lg">
-                →
-              </span>
-            </a>
-          ))}
+                <span
+                  className={`text-sm font-bold uppercase tracking-wider ${
+                    isActive
+                      ? "text-[#3533cd]"
+                      : "text-gray-800"
+                  }`}
+                >
+                  {link}
+                </span>
+                <span className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-[#3533cd] text-lg">
+                  →
+                </span>
+              </a>
+            );
+          })}
 
           <div className="h-[1px] bg-gray-100 w-full my-1"></div>
 
           <a
-            href="#contact"
+            href={isHome ? "#contact" : "/#contact"}
             onClick={handleNavClick}
             className="block text-center w-full mt-1 bg-black text-white px-4 py-3 rounded-xl text-xs uppercase font-bold tracking-widest hover:bg-[#3533cd] transition-colors duration-300"
           >
