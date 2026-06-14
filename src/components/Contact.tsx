@@ -52,7 +52,7 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-3xl mx-auto flex flex-col gap-8 text-left mt-16 z-20 relative bg-white/50 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-black/5 shadow-xl">
+    <form onSubmit={handleSubmit} className="w-full max-w-3xl mx-auto flex flex-col gap-8 text-left mt-16 z-20 relative bg-white md:bg-white/50 md:backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-black/5 shadow-xl">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="flex flex-col gap-2">
           <label className="font-mono text-xs uppercase tracking-widest text-black/60">Name</label>

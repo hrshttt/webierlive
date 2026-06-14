@@ -120,6 +120,22 @@ const Services = () => {
 
   useEffect(() => {
     let ticking = false;
+    let isSectionVisible = false;
+
+    // Monitor section visibility so we can completely skip calculations when off-screen
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isSectionVisible = entry.isIntersecting;
+        if (isSectionVisible) {
+          animateCards();
+        }
+      },
+      { threshold: 0 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
     const animateCards = () => {
       const cards = cardsRef.current;
@@ -162,6 +178,7 @@ const Services = () => {
     };
 
     const handleScroll = () => {
+      if (!isSectionVisible) return; // Skip heavy bounding box queries if section is off-screen (prevents scroll lag!)
       if (!ticking) {
         window.requestAnimationFrame(() => {
           animateCards();
@@ -176,6 +193,7 @@ const Services = () => {
     animateCards();
 
     return () => {
+      observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", animateCards);
     };

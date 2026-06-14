@@ -29,7 +29,7 @@ export default function Home() {
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      touchMultiplier: 2,
+      touchMultiplier: 1.2,
     });
 
     // 2. Sync Lenis with GSAP ScrollTrigger
@@ -42,7 +42,7 @@ export default function Home() {
 
     gsap.ticker.lagSmoothing(0);
 
-    const timer = setTimeout(() => setIsLoading(false), 500);
+    const timer = setTimeout(() => setIsLoading(false), 0);
 
     return () => {
       lenis.destroy();
@@ -55,7 +55,10 @@ export default function Home() {
     return (
       <div className="fixed inset-0 bg-[#fcfcfc] z-50 flex items-center justify-center">
         <div className="animate-pulse">
-          <h1 className="font-display text-4xl text-[#3533cd] tracking-tighter font-bold">
+          <h1 
+            className="text-4xl text-[#3533cd] tracking-tighter font-black"
+            style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
+          >
             WEBIER
           </h1>
         </div>
