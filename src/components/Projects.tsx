@@ -42,9 +42,6 @@ const ProjectVideo = ({ src }: { src: string }) => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Force loop programmatically to ensure it never stops playing
-    video.loop = true;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -69,8 +66,9 @@ const ProjectVideo = ({ src }: { src: string }) => {
       ref={videoRef}
       src={src} 
       muted 
+      loop
       playsInline 
-      preload="metadata"
+      preload="auto"
       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
     />
   );
@@ -162,11 +160,7 @@ const SelectedWorks = () => {
               <div className="aspect-[16/10] overflow-hidden rounded-[18px] m-3 relative bg-slate-950 border border-slate-200/20 shadow-sm">
                 
                 {/* Autoplaying Hardware-Accelerated Video */}
-                {hasIntersected ? (
-                  <ProjectVideo src={project.video} />
-                ) : (
-                  <div className="w-full h-full bg-slate-900 animate-pulse" />
-                )}
+                <ProjectVideo src={project.video} />
                 
                 {/* Dark overlay on hover */}
                 <div className="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors duration-500 pointer-events-none" />

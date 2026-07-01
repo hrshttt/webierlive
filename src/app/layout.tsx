@@ -316,11 +316,19 @@ export default function RootLayout({
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
 
-        {/* ── Preconnect for performance ───────────────────────────────── */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* ── Preload Fonts for Performance ────────────────────────────── */}
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
+          rel="preload"
+          href="/fonts/Satoshi-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/ClashDisplay-Bold.woff2"
+          as="font"
+          type="font/woff2"
           crossOrigin="anonymous"
         />
 
@@ -351,14 +359,14 @@ export default function RootLayout({
         {/* ── 3rd-Party Scripts (deferred) ─────────────────────────────── */}
         <Script
           id="vtag-ai-js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://r2.leadsy.ai/tag.js"
           data-pid="17gkBAUsVsoePvCag"
           data-version="062024"
         />
         <Script
           id="chatbase-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="q2NRpEmksjnS4e5lI29r-";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
