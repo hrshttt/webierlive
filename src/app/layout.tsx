@@ -31,6 +31,26 @@ export const metadata: Metadata = {
     "mobile app development",
     "UI UX design agency",
     "Webier Studio",
+    "website design for small business",
+    "best web design agency",
+    "hire web developer USA",
+    "website redesign services",
+    "ecommerce website design",
+    "landing page design",
+    "startup website design",
+    "React developer for hire",
+    "website maintenance services",
+    "Google Ads management agency",
+    "digital marketing agency USA",
+    "fast website development",
+    "conversion rate optimization",
+    "website speed optimization",
+    "Airbnb website design",
+    "vacation rental website design",
+    "restaurant website design",
+    "SaaS website design",
+    "web agency for startups",
+    "professional website design",
   ],
   authors: [{ name: "Webier Studio", url: "https://webierstudio.com" }],
   creator: "Webier Studio",
@@ -289,6 +309,73 @@ const faqSchema = {
         text: "Absolutely. We build all websites with technical SEO best practices from the ground up, including fast load times, semantic HTML, structured data, and on-page optimization. We also offer ongoing SEO retainer services.",
       },
     },
+    {
+      "@type": "Question",
+      name: "What is the best tech stack for a business website in 2026?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "For most businesses in 2026, we recommend Next.js with React for the frontend, combined with TypeScript for type safety. This stack offers server-side rendering for SEO, excellent performance scores, and scales effortlessly. For e-commerce, we add headless CMS solutions like Sanity or Shopify's Storefront API.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does SEO cost for a small business?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "SEO pricing varies based on competition and goals. At Webier Studio, technical SEO is included with every website build. For ongoing SEO services including content strategy, link building, and monthly reporting, our retainer packages start from $500/month.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the difference between a template website and custom development?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Template websites use pre-built designs that limit customization, performance, and SEO control. Custom development (what Webier Studio offers) means every element is designed and coded specifically for your brand, optimized for speed, SEO, and conversions. Custom sites typically load 2-5x faster and convert significantly better.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why is my website slow and how do I fix it?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Common causes of slow websites include unoptimized images, render-blocking JavaScript, poor hosting, excessive plugins, and lack of caching. We fix these through image optimization (WebP/AVIF), code splitting, CDN deployment, lazy loading, and Core Web Vitals optimization. Most sites we optimize achieve 90+ PageSpeed scores.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need a mobile app or is a responsive website enough?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "For most businesses, a well-built responsive website with Progressive Web App (PWA) features is sufficient and more cost-effective. A native mobile app is recommended only if you need offline functionality, push notifications, device hardware access, or have a specific use case like a marketplace or SaaS tool. We help you decide the best approach for your business.",
+      },
+    },
+  ],
+};
+
+/** Schema 4 — Organization (Triggers Knowledge Panel in Google) */
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://webierstudio.com/#organization",
+  name: "Webier Studio",
+  url: "https://webierstudio.com",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://webierstudio.com/webierLogo.webp",
+  },
+  email: "contact@webierstudio.com",
+  description:
+    "Premium web design, SEO, and AI-powered systems agency serving US businesses. Building high-performance websites using React and Next.js.",
+  foundingDate: "2025",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "contact@webierstudio.com",
+    contactType: "customer service",
+    availableLanguage: ["English", "Hindi"],
+  },
+  sameAs: [
+    "https://www.instagram.com/webier.in/",
+    "https://www.linkedin.com/company/webierdev/",
   ],
 };
 
@@ -352,6 +439,12 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
         />
 
 

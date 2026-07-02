@@ -68,7 +68,7 @@ const ProjectVideo = ({ src }: { src: string }) => {
       muted 
       loop
       playsInline 
-      preload="auto"
+      preload="metadata"
       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
     />
   );

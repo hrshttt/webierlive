@@ -15,6 +15,7 @@ import Process from "../components/Process";
 import Projects from "../components/Projects";
 import Achievements from "../components/Achievements";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,8 +59,10 @@ export default function Home() {
         <Achievements />
         <Contact />
       </main>
+      <Footer />
       <Analytics />
       <SpeedInsights />
     </>
   );
 }
+

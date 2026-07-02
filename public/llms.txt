@@ -2,7 +2,7 @@
 # This file helps AI language models & search engines understand our site.
 # Learn more: https://llmstxt.org
 
-> Webier Studio is a two-person premium web design and digital agency building high-performance websites, SEO strategies, and AI-powered systems for businesses — primarily in the United States.
+> Webier Studio is a two-person premium web design, SEO, and AI automation agency building high-performance websites, search ranking strategies, and AI-powered systems for businesses — primarily in the United States.
 
 ## About Webier Studio
 
@@ -10,21 +10,49 @@ Founded in 2025, Webier Studio blends strategy with design to craft digital expe
 
 **Core Belief:** Most agencies sell you a website. We build the thing your competitors will wish they thought of first.
 
+## Technical Stack & Expertise
+We use cutting-edge, high-performance web technologies:
+- **Frontend Framework**: Next.js 14 (App Router), React 18, TypeScript
+- **Styling & UI**: Tailwind CSS, custom design systems
+- **Animations & Interactivity**: GSAP (GreenSock Animation Platform), ScrollTrigger, Lenis smooth scrolling
+- **Backend & APIs**: Next.js Serverless Route Handlers, Resend API
+- **Performance & Analytics**: Core Web Vitals optimization, Google Analytics 4, Vercel Speed Insights & Web Analytics
+
 ## Our Services
 
 - **Web Development** (React / Next.js / TypeScript): High-performance, conversion-focused websites built for speed, scalability, and SEO.
 - **Mobile App Development**: Cross-platform apps for iOS & Android using React Native.
 - **UI/UX Design**: Human-centered interface design that increases engagement and converts visitors to customers.
-- **SEO & Performance Optimization**: Technical SEO, Core Web Vitals, content structuring, and ongoing ranking improvement.
+- **SEO & Performance Optimization**: Technical SEO, Core Web Vitals, schema markup structure, content mapping, and ongoing ranking improvements.
 - **Branding & Visual Identity**: Logo, color systems, typography, and brand guidelines.
-- **AI Chatbot Integration & Automation**: AI-powered tools integrated directly into websites and business workflows.
-- **Google & Meta Ads Management**: Paid advertising strategy and management.
+- **AI Chatbot Integration & Automation**: AI-powered custom chatbot integrations and automated backend workflows (e.g. Chatbase, custom LLMs).
+- **Google & Meta Ads Management**: Paid advertising strategy, targeting, copy, and performance analytics.
 
-## Our Work (Case Studies)
+## Selected Works & Case Studies
 
 - **East Pointe** (eastpointekc.com): Luxury lake cabin experience near Kansas City, Missouri. Full website design, development, and SEO.
 - **Korden Technologies** (korden.tech): Semiconductor and critical component sourcing. B2B website design and development.
 - **SOZO Inc.** (sozocorporate.com): Independent premium streetwear brand. E-commerce and brand website.
+
+## Resources & Guides (Blog Articles)
+Explore our deep-dives and guides on web design, development, and growth:
+- **SEO & Content**:
+  - Why Your Business Website Needs a Blog: `https://webierstudio.com/blog/content-marketing-blogging-business-website-2026`
+  - Next.js vs WordPress for Business Websites: `https://webierstudio.com/blog/nextjs-vs-wordpress-2026-business-website`
+  - Technical SEO Checklist: `https://webierstudio.com/blog/technical-seo-checklist-2026`
+  - Local SEO Guide for Small Businesses: `https://webierstudio.com/blog/local-seo-guide-small-business-2026`
+  - SEO Mistakes Killing Your Rankings: `https://webierstudio.com/blog/seo-mistakes-killing-your-rankings-2026`
+- **Design & UX**:
+  - Conversion Rate Optimization (CRO) with Premium UI/UX: `https://webierstudio.com/blog/conversion-rate-optimization-premium-uiux-design`
+  - UI/UX Design Trends to Drive Conversions: `https://webierstudio.com/blog/ui-ux-design-trends-2026-conversions`
+  - Mobile-First Design in 2026: `https://webierstudio.com/blog/mobile-first-design-importance-2026`
+  - Web Accessibility for Business: `https://webierstudio.com/blog/web-accessibility-guide-2026-business`
+  - Branding and Website Design Connection: `https://webierstudio.com/blog/branding-website-design-2026-connection`
+- **Development & Performance**:
+  - Website Speed Optimization Guide: `https://webierstudio.com/blog/website-speed-optimization-guide-2026`
+  - Next.js & React Server Components for Business Growth: `https://webierstudio.com/blog/nextjs-react-server-components-business-growth`
+  - Progressive Web Apps (PWA) Guide: `https://webierstudio.com/blog/progressive-web-apps-2026-business-guide`
+  - Headless CMS vs Traditional CMS: `https://webierstudio.com/blog/headless-cms-vs-traditional-cms-2026`
 
 ## Target Clients
 
@@ -59,4 +87,4 @@ Projects start from $500 and scale with complexity. We offer:
 - Full-scale platforms and apps: $5,000+
 
 ---
-*Last updated: 2026-06-13*
+*Last updated: 2026-07-02*

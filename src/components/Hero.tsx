@@ -275,9 +275,10 @@ const Hero: React.FC = () => {
         {/* Massive Headline - SEO Optimized */}
         <div className="flex flex-col items-center mix-blend-multiply">
           <h1
-            aria-label="Webier"
+            aria-label="Webier Studio — Premium Web Design, SEO & AI Systems Agency"
             className="font-display font-bold text-[18vw] leading-[0.8] tracking-tighter text-blue-800 transform scale-x-125 origin-center hero-title overflow-visible whitespace-nowrap"
           >
+            <span className="sr-only">Webier Studio — Premium Web Design, SEO & AI Systems Agency for US Businesses</span>
             {/* aria-hidden ensures screen readers read the label above, not individual letters */}
             {["W", "E", "B", "I", "E", "R"].map((char, i) => (
               <span
