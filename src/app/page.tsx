@@ -19,8 +19,6 @@ import Contact from "../components/Contact";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     // 1. Initialize Lenis (Smooth Scrolling)
     const lenis = new Lenis({
@@ -42,26 +40,11 @@ export default function Home() {
 
     gsap.ticker.lagSmoothing(0);
 
-    const timer = setTimeout(() => setIsLoading(false), 0);
-
     return () => {
       lenis.destroy();
       gsap.ticker.remove(lenis.raf);
-      clearTimeout(timer);
     };
   }, []);
-
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-[#fcfcfc] z-50 flex items-center justify-center">
-        <div className="animate-pulse">
-          <h1 className="text-4xl text-[#3533cd] tracking-tighter font-black font-display">
-            WEBIER
-          </h1>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>

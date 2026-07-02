@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { Instagram, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 /* -----------------------------------------------
    TYPE DEFINITIONS
@@ -126,16 +127,28 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => (
     {links.map((item) => {
       const isExternal = item.href.startsWith("http");
 
+      if (isExternal) {
+        return (
+          <a
+            key={item.label}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl md:text-3xl font-bold text-white/90 hover:text-white transition"
+          >
+            {item.label}
+          </a>
+        );
+      }
+
       return (
-        <a
+        <Link
           key={item.label}
           href={item.href}
-          target={isExternal ? "_blank" : "_self"}
-          rel={isExternal ? "noopener noreferrer" : undefined}
           className="text-2xl md:text-3xl font-bold text-white/90 hover:text-white transition"
         >
           {item.label}
-        </a>
+        </Link>
       );
     })}
   </div>

@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Lenis from "lenis";
 import { Search, ArrowRight, ArrowLeft, BookOpen, Clock, Calendar } from "lucide-react";
+import Link from "next/link";
 import Navbar from "../../Navbar";
 import Contact from "../../components/Contact";
 import { blogPosts, BlogPost } from "../../data/blogPosts";
@@ -109,7 +110,7 @@ export default function BlogListPage() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFC947] animate-pulse" />
               Webier Studio Journal
             </div>
-            <h1 className="font-display font-black text-5xl md:text-8xl tracking-tight leading-[0.9] text-black">
+            <h1 className="font-display font-black text-4xl sm:text-5xl md:text-8xl tracking-tight leading-[0.9] text-black">
               Insights &amp;<br />
               Intellect.
             </h1>
@@ -131,7 +132,7 @@ export default function BlogListPage() {
         {/* Search & Categories Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-black/10 pb-8 mb-12">
           {/* Categories Pill List */}
-          <div className="flex flex-wrap gap-2 md:gap-3 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+          <div className="flex flex-nowrap md:flex-wrap gap-2 md:gap-3 overflow-x-auto pb-2 md:pb-0 scrollbar-none w-full">
             {categories.map((cat) => {
               const isActive = selectedCategory === cat;
               return (
@@ -141,7 +142,7 @@ export default function BlogListPage() {
                     setSelectedCategory(cat);
                     setShowAllPublications(false); // Reset archive on filter change
                   }}
-                  className={`px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
+                  className={`px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
                     isActive
                       ? "bg-black text-white shadow-md shadow-black/10 scale-105"
                       : "bg-white/80 hover:bg-white text-black/70 hover:text-black border border-black/5 hover:border-black/10 backdrop-blur-sm"
@@ -172,7 +173,7 @@ export default function BlogListPage() {
             {/* Featured Post Card (Visible when category is 'All' and search query is empty) */}
             {featuredPost && (
               <div className="blog-featured-card mb-24 bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/50 shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-black/10 transition-all duration-500 group">
-                <a href={`/blog/${featuredPost.slug}`} className="block p-8 md:p-12 lg:p-14">
+                <Link href={`/blog/${featuredPost.slug}`} className="block p-8 md:p-12 lg:p-14">
                   <div>
                     <div className="flex items-center gap-3 mb-6">
                       <span className={`px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border ${getCategoryColor(featuredPost.category)}`}>
@@ -213,7 +214,7 @@ export default function BlogListPage() {
                       <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             )}
 
@@ -253,7 +254,7 @@ export default function BlogListPage() {
                         key={post.id}
                         className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-21.3px)] flex-shrink-0 snap-start bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/50 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 transition-all duration-300 flex flex-col justify-between group"
                       >
-                        <a href={`/blog/${post.slug}`} className="flex flex-col h-full justify-between p-6">
+                        <Link href={`/blog/${post.slug}`} className="flex flex-col h-full justify-between p-6">
                           <div>
                             <div className="flex items-center gap-3 mb-4">
                               <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getCategoryColor(post.category)}`}>
@@ -293,7 +294,7 @@ export default function BlogListPage() {
                               <ArrowRight className="w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       </article>
                     ))}
                   </div>
@@ -313,7 +314,7 @@ export default function BlogListPage() {
                     key={post.id}
                     className="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/50 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 transition-all duration-300 flex flex-col justify-between group"
                   >
-                    <a href={`/blog/${post.slug}`} className="flex flex-col h-full justify-between p-6">
+                    <Link href={`/blog/${post.slug}`} className="flex flex-col h-full justify-between p-6">
                       <div>
                         <div className="flex items-center gap-3 mb-4">
                           <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getCategoryColor(post.category)}`}>
@@ -353,7 +354,7 @@ export default function BlogListPage() {
                           <ArrowRight className="w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </article>
                 ))}
               </div>
@@ -386,7 +387,7 @@ export default function BlogListPage() {
                     key={post.id}
                     className="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/50 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 transition-all duration-300 flex flex-col justify-between group"
                   >
-                    <a href={`/blog/${post.slug}`} className="flex flex-col h-full justify-between p-6">
+                    <Link href={`/blog/${post.slug}`} className="flex flex-col h-full justify-between p-6">
                       <div>
                         <div className="flex items-center gap-3 mb-4">
                           <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getCategoryColor(post.category)}`}>
@@ -426,7 +427,7 @@ export default function BlogListPage() {
                           <ArrowRight className="w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </article>
                 ))}
               </div>

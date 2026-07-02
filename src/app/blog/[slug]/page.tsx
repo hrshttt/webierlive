@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Lenis from "lenis";
 import { ArrowLeft, Clock, Calendar, ArrowRight, Share2, Check } from "lucide-react";
+import Link from "next/link";
 import Navbar from "../../../Navbar";
 import Contact from "../../../components/Contact";
 import { blogPosts, BlogPost } from "../../../data/blogPosts";
@@ -91,12 +92,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="font-sans text-black/60 mb-8 font-light">
             The article you are looking for does not exist or has been relocated to another slug.
           </p>
-          <a
+          <Link
             href="/blog"
             className="inline-flex items-center gap-2 bg-[#3533cd] hover:bg-[#3533cd]/95 text-white font-bold text-sm uppercase tracking-wider rounded-full py-3.5 px-8 transition-colors shadow-lg shadow-[#3533cd]/15"
           >
             <ArrowLeft className="w-4 h-4" /> Back To Blog
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -121,13 +122,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="pt-36 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto">
         <div className="max-w-4xl mx-auto">
           {/* Back Navigation Button */}
-          <a
+          <Link
             href="/blog"
             className="back-btn inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-black/60 hover:text-black transition-colors mb-12 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Articles
-          </a>
+          </Link>
 
           {/* Post Header */}
           <header className="mb-12">
@@ -275,7 +276,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     key={p.id}
                     className="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/50 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
                   >
-                    <a href={`/blog/${p.slug}`} className="flex flex-col h-full justify-between p-6">
+                    <Link href={`/blog/${p.slug}`} className="flex flex-col h-full justify-between p-6">
                       <div>
                         <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border mb-4 inline-block ${getCategoryColor(p.category)}`}>
                           {p.category}
@@ -296,7 +297,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                           <ArrowRight className="w-3.5 h-3.5 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </article>
                 ))}
               </div>

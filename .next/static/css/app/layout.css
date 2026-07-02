@@ -909,6 +909,9 @@
   .flex-row {
     flex-direction: row;
   }
+  .flex-nowrap {
+    flex-wrap: nowrap;
+  }
   .flex-wrap {
     flex-wrap: wrap;
   }
@@ -2786,6 +2789,11 @@
   .md\:flex-row {
     @media (width >= 48rem) {
       flex-direction: row;
+    }
+  }
+  .md\:flex-wrap {
+    @media (width >= 48rem) {
+      flex-wrap: wrap;
     }
   }
   .md\:items-baseline {

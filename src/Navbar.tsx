@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
+import Link from "next/link";
 
 // Links configuration
 // ENSURE THESE IDS MATCH YOUR SECTION IDS EXACTLY
@@ -163,7 +164,7 @@ const Navbar = () => {
         />
 
         {/* Logo */}
-        <a
+        <Link
           href={isHome ? "#hero" : "/#hero"}
           onClick={handleNavClick}
           className="pl-2 md:pl-6 pr-6 relative z-10 group/logo cursor-pointer"
@@ -175,7 +176,7 @@ const Navbar = () => {
               .
             </span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-1">
@@ -191,7 +192,7 @@ const Navbar = () => {
 
             return (
               <MagneticItem key={item}>
-                <a
+                <Link
                   href={href}
                   onClick={handleNavClick}
                   className="relative px-5 py-3 rounded-full overflow-hidden group/btn block"
@@ -216,7 +217,7 @@ const Navbar = () => {
                         : "opacity-0 scale-0 group-hover/btn:opacity-0"
                     }`}
                   ></span>
-                </a>
+                </Link>
               </MagneticItem>
             );
           })}
@@ -224,7 +225,7 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="pl-4 pr-2 hidden md:block">
-          <a
+          <Link
             href={isHome ? "#contact" : "/#contact"}
             onClick={handleNavClick}
             className="block relative overflow-hidden bg-black text-white px-6 py-2.5 rounded-full text-[10px] uppercase font-bold tracking-widest group hover:shadow-lg transition-all"
@@ -233,7 +234,7 @@ const Navbar = () => {
               Let's Talk
             </span>
             <div className="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300"></div>
-          </a>
+          </Link>
         </div>
 
         {/* Hamburger Icon */}
@@ -277,7 +278,7 @@ const Navbar = () => {
               : (isHome ? `#${link.toLowerCase()}` : `/#${link.toLowerCase()}`);
 
             return (
-              <a
+              <Link
                 key={link}
                 href={href}
                 onClick={handleNavClick}
@@ -295,19 +296,19 @@ const Navbar = () => {
                 <span className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-[#3533cd] text-lg">
                   →
                 </span>
-              </a>
+              </Link>
             );
           })}
 
           <div className="h-[1px] bg-gray-100 w-full my-1"></div>
 
-          <a
+          <Link
             href={isHome ? "#contact" : "/#contact"}
             onClick={handleNavClick}
             className="block text-center w-full mt-1 bg-black text-white px-4 py-3 rounded-xl text-xs uppercase font-bold tracking-widest hover:bg-[#3533cd] transition-colors duration-300"
           >
             Let's Talk
-          </a>
+          </Link>
         </div>
       </div>
     </div>

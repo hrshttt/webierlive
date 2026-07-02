@@ -357,13 +357,15 @@ export default function RootLayout({
 
 
         {/* ── 3rd-Party Scripts (deferred) ─────────────────────────────── */}
-        <Script
-          id="vtag-ai-js"
-          strategy="lazyOnload"
-          src="https://r2.leadsy.ai/tag.js"
-          data-pid="17gkBAUsVsoePvCag"
-          data-version="062024"
-        />
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            id="vtag-ai-js"
+            strategy="lazyOnload"
+            src="https://r2.leadsy.ai/tag.js"
+            data-pid="17gkBAUsVsoePvCag"
+            data-version="062024"
+          />
+        )}
         <Script
           id="chatbase-init"
           strategy="lazyOnload"
