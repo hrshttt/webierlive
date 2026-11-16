@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   // ── Performance & SEO Headers ──────────────────────────────────────────────
   async headers() {
     return [
@@ -27,6 +24,11 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
+          // HSTS — tells browsers to always use HTTPS (SEO ranking signal)
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
           // Permissions Policy
           {
             key: 'Permissions-Policy',
@@ -37,6 +39,16 @@ const nextConfig = {
       // Cache static assets for performance (Core Web Vitals)
       {
         source: '/(.*)\\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|otf)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Cache video assets
+      {
+        source: '/(.*)\\.(mp4|webm)',
         headers: [
           {
             key: 'Cache-Control',

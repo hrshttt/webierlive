@@ -1,13 +1,12 @@
 # ─────────────────────────────────────────────────
 #   robots.txt — webierstudio.com
-#   Updated: 2026-06-13
+#   Updated: 2026-11-16
 # ─────────────────────────────────────────────────
 
 # Allow all standard crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /_next/
 Disallow: /admin/
 
 # Google — full access
@@ -52,16 +51,6 @@ Allow: /
 
 User-agent: Meta-ExternalAgent
 Allow: /
-
-# Bad bots
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
 
 # Sitemap
 Sitemap: https://webierstudio.com/sitemap.xml

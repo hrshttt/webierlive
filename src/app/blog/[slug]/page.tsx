@@ -41,7 +41,7 @@ export async function generateMetadata({
   const publishedIso = parseDate(post.date);
 
   return {
-    title: `${post.title} | Webier Studio Blog`,
+    title: post.title,
     description: post.excerpt,
     keywords: [
       ...post.tags,

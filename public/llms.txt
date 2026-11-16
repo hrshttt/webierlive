@@ -13,10 +13,11 @@ Founded in 2025, Webier Studio blends strategy with design to craft digital expe
 ## Technical Stack & Expertise
 We use cutting-edge, high-performance web technologies:
 - **Frontend Framework**: Next.js 14 (App Router), React 18, TypeScript
-- **Styling & UI**: Tailwind CSS, custom design systems
+- **Styling & UI**: Tailwind CSS v4, custom design systems
 - **Animations & Interactivity**: GSAP (GreenSock Animation Platform), ScrollTrigger, Lenis smooth scrolling
 - **Backend & APIs**: Next.js Serverless Route Handlers, Resend API
 - **Performance & Analytics**: Core Web Vitals optimization, Google Analytics 4, Vercel Speed Insights & Web Analytics
+- **SEO**: Technical SEO, Schema Markup (JSON-LD), Structured Data, Core Web Vitals, sitemap.xml, robots.txt, RSS feeds
 
 ## Our Services
 
@@ -34,35 +35,65 @@ We use cutting-edge, high-performance web technologies:
 - **Korden Technologies** (korden.tech): Semiconductor and critical component sourcing. B2B website design and development.
 - **SOZO Inc.** (sozocorporate.com): Independent premium streetwear brand. E-commerce and brand website.
 
-## Resources & Guides (Blog Articles)
-Explore our deep-dives and guides on web design, development, and growth:
-- **SEO & Search Strategy**:
-  - Why Your Business Website Needs a Blog: `https://webierstudio.com/blog/content-marketing-blogging-business-website-2026`
-  - Next.js vs WordPress for Business Websites: `https://webierstudio.com/blog/nextjs-vs-wordpress-2026-business-website`
-  - Technical SEO Checklist: `https://webierstudio.com/blog/technical-seo-checklist-2026`
-  - Local SEO Guide for Small Businesses: `https://webierstudio.com/blog/local-seo-guide-small-business-2026`
-  - SEO Mistakes Killing Your Rankings: `https://webierstudio.com/blog/seo-mistakes-killing-your-rankings-2026`
-  - Mastering Core Web Vitals (INP, LCP, CLS): `https://webierstudio.com/blog/optimizing-core-web-vitals-inp-lcp-cls-2026`
-  - Schema Markup & Google Rich Snippets: `https://webierstudio.com/blog/schema-markup-jsonld-rich-snippets-google-2026`
-- **Design, UX & Branding**:
-  - Conversion Rate Optimization (CRO) with Premium UI/UX: `https://webierstudio.com/blog/conversion-rate-optimization-premium-uiux-design`
-  - UI/UX Design Trends to Drive Conversions: `https://webierstudio.com/blog/ui-ux-design-trends-2026-conversions`
-  - Mobile-First Design in 2026: `https://webierstudio.com/blog/mobile-first-design-importance-2026`
-  - Web Accessibility for Business: `https://webierstudio.com/blog/web-accessibility-guide-2026-business`
-  - Branding and Website Design Connection: `https://webierstudio.com/blog/branding-website-design-2026-connection`
-  - Designing High-End Dark Mode Interfaces: `https://webierstudio.com/blog/dark-mode-design-best-practices-modern-web-2026`
-  - Luxury Hospitality Web Design & Direct Bookings: `https://webierstudio.com/blog/luxury-hospitality-website-design-secrets-2026`
-  - The First 5 Seconds: Hero Section UX: `https://webierstudio.com/blog/reducing-bounce-rate-first-impression-ux-2026`
-- **Development, Performance & AI**:
-  - Website Speed Optimization Guide: `https://webierstudio.com/blog/website-speed-optimization-guide-2026`
-  - Next.js & React Server Components for Business Growth: `https://webierstudio.com/blog/nextjs-react-server-components-business-growth`
-  - Progressive Web Apps (PWA) Guide: `https://webierstudio.com/blog/progressive-web-apps-2026-business-guide`
-  - Headless CMS vs Traditional CMS: `https://webierstudio.com/blog/headless-cms-vs-traditional-cms-2026`
-  - Mastering Micro-Animations with GSAP in Next.js: `https://webierstudio.com/blog/building-micro-animations-with-gsap-nextjs-guide-2026`
-  - How AI Chatbots Double Lead Conversions: `https://webierstudio.com/blog/ai-chatbots-customer-conversion-business-growth-2026`
-  - Next.js App Router Caching & Revalidation: `https://webierstudio.com/blog/nextjs-caching-revalidation-strategies-production-2026`
-  - Hardening Next.js Security Headers & CSP: `https://webierstudio.com/blog/modern-web-app-security-headers-csp-hardening-2026`
-  - Zero-Lag Media: Advanced Image & Video Optimization: `https://webierstudio.com/blog/image-video-optimization-techniques-sub-second-web-2026`
+## Resources & Guides (50 Blog Articles)
+
+### SEO & Search Strategy
+- Why Your Business Website Needs a Blog: `https://webierstudio.com/blog/content-marketing-blogging-business-website-2026`
+- Next.js vs WordPress for Business Websites: `https://webierstudio.com/blog/nextjs-vs-wordpress-2026-business-website`
+- Technical SEO Checklist 2026: `https://webierstudio.com/blog/technical-seo-checklist-2026`
+- Local SEO Guide for Small Businesses: `https://webierstudio.com/blog/local-seo-guide-small-business-2026`
+- SEO Mistakes Killing Your Rankings: `https://webierstudio.com/blog/seo-mistakes-killing-your-rankings-2026`
+- Mastering Core Web Vitals (INP, LCP, CLS): `https://webierstudio.com/blog/optimizing-core-web-vitals-inp-lcp-cls-2026`
+- Schema Markup & Google Rich Snippets: `https://webierstudio.com/blog/schema-markup-jsonld-rich-snippets-google-2026`
+- SEO Checklist for New Website Launch: `https://webierstudio.com/blog/seo-checklist-new-website-launch-2026`
+- Local SEO for Small Businesses: `https://webierstudio.com/blog/local-seo-small-business-2026`
+- Landing Page SEO — Rank & Convert: `https://webierstudio.com/blog/landing-page-seo-guide-rank-convert-visitors-2026`
+- Website Migration SEO Checklist: `https://webierstudio.com/blog/website-migration-seo-checklist-protect-google-rankings-2026`
+- E-commerce SEO Product Page Optimization: `https://webierstudio.com/blog/ecommerce-seo-product-page-optimization-google-2026`
+- AI Search Optimization for Business Websites: `https://webierstudio.com/blog/ai-search-optimization-business-website-2026`
+
+### Design, UX & Branding
+- Conversion Rate Optimization with Premium UI/UX: `https://webierstudio.com/blog/conversion-rate-optimization-premium-uiux-design`
+- UI/UX Design Trends to Drive Conversions: `https://webierstudio.com/blog/ui-ux-design-trends-2026-conversions`
+- Mobile-First Design in 2026: `https://webierstudio.com/blog/mobile-first-design-importance-2026`
+- Web Accessibility for Business: `https://webierstudio.com/blog/web-accessibility-guide-2026-business`
+- Branding and Website Design Connection: `https://webierstudio.com/blog/branding-website-design-2026-connection`
+- Designing High-End Dark Mode Interfaces: `https://webierstudio.com/blog/dark-mode-design-best-practices-modern-web-2026`
+- Luxury Hospitality Web Design & Direct Bookings: `https://webierstudio.com/blog/luxury-hospitality-website-design-secrets-2026`
+- The First 5 Seconds — Hero Section UX: `https://webierstudio.com/blog/reducing-bounce-rate-first-impression-ux-2026`
+- Landing Page Optimization Guide: `https://webierstudio.com/blog/landing-page-optimization-guide-2026`
+- Mobile-First Design — Why It Matters: `https://webierstudio.com/blog/mobile-first-design-why-it-matters-2026`
+- Branding & Website Design Connection: `https://webierstudio.com/blog/branding-website-design-connection-2026`
+- Website Accessibility — Why It Matters: `https://webierstudio.com/blog/website-accessibility-why-it-matters-2026`
+- Website Accessibility WCAG Complete Guide: `https://webierstudio.com/blog/website-accessibility-wcag-standards-complete-guide-2026`
+
+### Development, Performance & AI
+- Website Speed Optimization Guide: `https://webierstudio.com/blog/website-speed-optimization-guide-2026`
+- Next.js & React Server Components for Business: `https://webierstudio.com/blog/nextjs-react-server-components-business-growth`
+- Progressive Web Apps (PWA) Guide: `https://webierstudio.com/blog/progressive-web-apps-2026-business-guide`
+- Headless CMS vs Traditional CMS: `https://webierstudio.com/blog/headless-cms-vs-traditional-cms-2026`
+- Micro-Animations with GSAP in Next.js: `https://webierstudio.com/blog/building-micro-animations-with-gsap-nextjs-guide-2026`
+- AI Chatbots Double Lead Conversions: `https://webierstudio.com/blog/ai-chatbots-customer-conversion-business-growth-2026`
+- Next.js App Router Caching & Revalidation: `https://webierstudio.com/blog/nextjs-caching-revalidation-strategies-production-2026`
+- Next.js Security Headers & CSP: `https://webierstudio.com/blog/modern-web-app-security-headers-csp-hardening-2026`
+- Image & Video Optimization for Web: `https://webierstudio.com/blog/image-video-optimization-techniques-sub-second-web-2026`
+- Website Security Best Practices 2026: `https://webierstudio.com/blog/website-security-best-practices-2026`
+- AI-Powered Websites — Future of Web Dev: `https://webierstudio.com/blog/ai-powered-websites-2026-future-web-development`
+
+### Business & Strategy
+- How Much Does a Website Cost in 2026: `https://webierstudio.com/blog/cost-of-business-website-2026-guide`
+- Signs Your Website Needs a Redesign: `https://webierstudio.com/blog/signs-your-website-needs-redesign-2026`
+- E-commerce Website Features 2026: `https://webierstudio.com/blog/ecommerce-website-features-2026-conversions`
+- How to Choose a Web Development Agency: `https://webierstudio.com/blog/how-to-choose-web-development-agency-2026`
+- Hidden Cost of a Slow Website: `https://webierstudio.com/blog/slow-website-cost-business-2026`
+- When to Redesign Your Business Website: `https://webierstudio.com/blog/when-to-redesign-your-business-website-2026`
+- Custom Website vs Website Builder: `https://webierstudio.com/blog/custom-website-vs-website-builder-2026`
+- E-Commerce Website Essentials: `https://webierstudio.com/blog/ecommerce-website-essentials-2026`
+- Website Maintenance — Why It Matters: `https://webierstudio.com/blog/website-maintenance-why-it-matters-2026`
+- B2B Website Design Features: `https://webierstudio.com/blog/b2b-website-design-features-generate-qualified-leads-2026`
+- Website Pricing Guide 2026: `https://webierstudio.com/blog/how-much-does-a-website-cost-2026-pricing-guide`
+- SaaS Website Design — Convert Visitors: `https://webierstudio.com/blog/saas-website-design-convert-visitors-into-paying-customers-2026`
+- Custom vs Builder — Business Comparison: `https://webierstudio.com/blog/custom-website-vs-website-builder-business-comparison-2026`
 
 ## Target Clients
 
@@ -71,6 +102,7 @@ We specialize in helping:
 - Startups and SaaS companies needing a premium web presence
 - Local service businesses needing conversion-optimized websites
 - E-commerce brands needing performant, beautiful storefronts
+- B2B companies needing lead-generating websites
 
 ## Key Facts
 
@@ -78,13 +110,16 @@ We specialize in helping:
 - Founded: 2025
 - Countries Served: USA, UK, UAE, India
 - Projects Delivered: 15+
+- Blog Articles Published: 50+
 - Client Satisfaction: 100% retention rate
 - Response Time: Within 24 hours
+- Tech Stack: Next.js, React, TypeScript, Tailwind CSS, GSAP
 
 ## Contact & Social
 
 - **Email**: contact@webierstudio.com
 - **Website**: https://webierstudio.com
+- **Blog**: https://webierstudio.com/blog
 - **Instagram**: https://www.instagram.com/webier.in/
 - **LinkedIn**: https://www.linkedin.com/company/webierdev/
 - **WhatsApp**: https://wa.me/918209965066
@@ -97,4 +132,4 @@ Projects start from $500 and scale with complexity. We offer:
 - Full-scale platforms and apps: $5,000+
 
 ---
-*Last updated: 2026-07-02*
+*Last updated: 2026-11-16*

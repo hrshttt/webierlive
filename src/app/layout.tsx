@@ -106,9 +106,8 @@ export const metadata: Metadata = {
 
   // ── Verification (add your codes here when ready) ─────────────────────────
   verification: {
-    google: "PYZGdyjSiSCAgF1s9-x66uIuKBYLstj5ctaXg98j2Zs", // Replace with Search Console code
-    // yandex: 'YOUR_YANDEX_CODE',
-    // bing: 'YOUR_BING_CODE',
+    google: "PYZGdyjSiSCAgF1s9-x66uIuKBYLstj5ctaXg98j2Zs",
+    // bing: 'YOUR_BING_VERIFICATION_CODE', // Register at https://www.bing.com/webmasters and add your code
   },
 
   // ── App / PWA ─────────────────────────────────────────────────────────────
@@ -121,11 +120,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon.png", type: "image/png" },
       { url: "/favicon.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon.png", sizes: "16x16", type: "image/png" },
     ],
-    shortcut: "/favicon.png",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
 
