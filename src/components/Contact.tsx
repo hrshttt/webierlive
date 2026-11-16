@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { ArrowUpRight, Instagram, Linkedin, Loader2, MessageCircle } from "lucide-react";
 
 // --- Types ---

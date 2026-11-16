@@ -3,11 +3,11 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import Lenis from "lenis";
-import { Search, ArrowRight, ArrowLeft, BookOpen, Clock, Calendar, ArrowUpDown, Shuffle, ChevronDown, Check } from "lucide-react";
+import { Search, ArrowRight, ArrowLeft, BookOpen, Clock, Calendar, ArrowUpDown, ChevronDown, Check } from "lucide-react";
 import Link from "next/link";
 import Navbar from "../../Navbar";
 import Contact from "../../components/Contact";
-import { blogPosts, BlogPost } from "../../data/blogPosts";
+import { blogPosts } from "../../data/blogPosts";
 
 export default function BlogListClient() {
   const searchParams = useSearchParams();

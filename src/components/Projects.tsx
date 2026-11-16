@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {

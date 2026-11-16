@@ -6,7 +6,7 @@ import { ArrowLeft, Clock, Calendar, ArrowRight, Share2, Check, Twitter, Linkedi
 import Link from "next/link";
 import Navbar from "../../../Navbar";
 import Contact from "../../../components/Contact";
-import { blogPosts, BlogPost } from "../../../data/blogPosts";
+import { blogPosts } from "../../../data/blogPosts";
 
 interface BlogPostClientProps {
   slug: string;
