@@ -1,0 +1,558 @@
+import type { Metadata } from "next";
+import Script from "next/script";
+import "./globals.css";
+
+// ---------------------------------------------------------------------------
+// SEO METADATA — Webier Studio
+// ---------------------------------------------------------------------------
+export const metadata: Metadata = {
+  // ── Core ──────────────────────────────────────────────────────────────────
+  metadataBase: new URL("https://webierstudio.com"),
+  title: {
+    default: "Webier Studio | Web Design, SEO & AI Systems for US Businesses",
+    template: "%s | Webier Studio",
+  },
+  description:
+    "Webier Studio builds high-performance websites, SEO strategies, and AI-powered systems for businesses in the USA. We craft fast, conversion-focused digital experiences using React & Next.js. Get a free quote today.",
+  keywords: [
+    "web design agency USA",
+    "web development company",
+    "Next.js development agency",
+    "SEO agency for small businesses",
+    "AI chatbot integration",
+    "hospitality web design",
+    "short term rental website design",
+    "React web development USA",
+    "web design for restaurants",
+    "affordable web design agency",
+    "custom website development",
+    "branding agency USA",
+    "mobile app development",
+    "UI UX design agency",
+    "Webier Studio",
+    "website design for small business",
+    "best web design agency",
+    "hire web developer USA",
+    "website redesign services",
+    "ecommerce website design",
+    "landing page design",
+    "startup website design",
+    "React developer for hire",
+    "website maintenance services",
+    "Google Ads management agency",
+    "digital marketing agency USA",
+    "fast website development",
+    "conversion rate optimization",
+    "website speed optimization",
+    "Airbnb website design",
+    "vacation rental website design",
+    "restaurant website design",
+    "SaaS website design",
+    "web agency for startups",
+    "professional website design",
+  ],
+  authors: [{ name: "Webier Studio", url: "https://webierstudio.com" }],
+  creator: "Webier Studio",
+  publisher: "Webier Studio",
+
+  // ── Canonical ─────────────────────────────────────────────────────────────
+  alternates: {
+    canonical: "https://webierstudio.com",
+  },
+
+  // ── Robots ────────────────────────────────────────────────────────────────
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  // ── Open Graph ────────────────────────────────────────────────────────────
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://webierstudio.com",
+    siteName: "Webier Studio",
+    title: "Webier Studio — Web Design, SEO & AI Systems for US Businesses",
+    description:
+      "We build high-performance websites, SEO strategies, and AI-powered systems that help US businesses grow online. Premium design. Real results.",
+    images: [
+      {
+        url: "https://webierstudio.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Webier Studio — Web Design & AI Systems for US Businesses",
+        type: "image/png",
+      },
+    ],
+  },
+
+  // ── Twitter / X Card ─────────────────────────────────────────────────────
+  twitter: {
+    card: "summary_large_image",
+    site: "@webierstudio",
+    creator: "@webierstudio",
+    title: "Webier Studio — Web Design, SEO & AI Systems",
+    description:
+      "High-performance websites, SEO, and AI-powered systems for US businesses. Fast. Conversion-focused. Premium.",
+    images: ["https://webierstudio.com/og-image.png"],
+  },
+
+  // ── Verification (add your codes here when ready) ─────────────────────────
+  verification: {
+    google: "PYZGdyjSiSCAgF1s9-x66uIuKBYLstj5ctaXg98j2Zs", // Replace with Search Console code
+    // yandex: 'YOUR_YANDEX_CODE',
+    // bing: 'YOUR_BING_CODE',
+  },
+
+  // ── App / PWA ─────────────────────────────────────────────────────────────
+  applicationName: "Webier Studio",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
+
+  // ── Category ─────────────────────────────────────────────────────────────
+  category: "Web Design & Digital Agency",
+};
+
+// ---------------------------------------------------------------------------
+// STRUCTURED DATA (JSON-LD Schemas)
+// ---------------------------------------------------------------------------
+
+/** Schema 1 — LocalBusiness / ProfessionalService */
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["ProfessionalService", "WebDesign"],
+  "@id": "https://webierstudio.com/#business",
+  name: "Webier Studio",
+  url: "https://webierstudio.com",
+  logo: "https://webierstudio.com/webierLogo.webp",
+  image: "https://webierstudio.com/og-image.png",
+  email: "contact@webierstudio.com",
+  description:
+    "Webier Studio is a premium web design, SEO, and AI systems agency serving US businesses. We build high-performance websites using React and Next.js that drive real business results.",
+  foundingDate: "2025",
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    value: 2,
+  },
+  areaServed: [
+    {
+      "@type": "Country",
+      name: "United States",
+    },
+    {
+      "@type": "Country",
+      name: "United Kingdom",
+    },
+    {
+      "@type": "Country",
+      name: "United Arab Emirates",
+    },
+    {
+      "@type": "Country",
+      name: "India",
+    },
+  ],
+  priceRange: "$$",
+  currenciesAccepted: "USD",
+  openingHours: "Mo-Fr 09:00-18:00",
+  sameAs: [
+    "https://www.instagram.com/webier.in/",
+    "https://www.linkedin.com/company/webierdev/",
+  ],
+  knowsAbout: [
+    "Next.js Development",
+    "React Web Applications",
+    "Technical SEO Optimization",
+    "Core Web Vitals Optimization",
+    "UI/UX Design",
+    "AI Chatbot Integration",
+    "Direct Booking Hospitality Websites",
+    "Conversion Rate Optimization (CRO)",
+    "Headless CMS Architecture",
+    "GSAP Animation",
+    "Web Performance Engineering"
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Webier Studio Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Web Development",
+          description:
+            "High-performance websites built with React & Next.js for speed, security, and conversions.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Mobile App Development",
+          description:
+            "Cross-platform mobile apps for iOS and Android using React Native.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "UI/UX Design",
+          description:
+            "Human-centered interface design that converts visitors into customers.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "SEO & Performance Optimization",
+          description:
+            "Boost search rankings with technical SEO, Core Web Vitals optimization, and content strategy.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Branding & Visual Identity",
+          description:
+            "Logo, color system, typography, and brand guidelines designed with precision.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "AI Chatbot Integration",
+          description:
+            "AI-powered chatbots and automation systems to streamline your business operations.",
+        },
+      },
+    ],
+  },
+};
+
+/** Schema 2 — WebSite (enables Sitelinks Search Box) */
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://webierstudio.com/#website",
+  name: "Webier Studio",
+  url: "https://webierstudio.com",
+  description:
+    "Premium web design, SEO, and AI-powered systems for US businesses.",
+  publisher: {
+    "@id": "https://webierstudio.com/#business",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://webierstudio.com/blog?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+/** Schema 3 — FAQ (Appears in Google rich results / People Also Ask) */
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What services does Webier Studio offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Webier Studio offers web development, mobile app development, UI/UX design, SEO & performance optimization, branding, and AI chatbot integration for businesses primarily in the USA.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does a website cost at Webier Studio?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our web design projects start from $500 and scale based on complexity. We offer packages for small businesses, startups, and enterprises. Contact us for a free quote.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does it take to build a website?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A standard business website typically takes 4–8 weeks. More complex projects like e-commerce or web apps can take 6–12 weeks. We always provide a clear timeline before starting.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Webier Studio work with clients outside the USA?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes! While we primarily serve US-based businesses, we have successfully worked with clients in the UK, UAE, and India.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you provide SEO services along with web design?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Absolutely. We build all websites with technical SEO best practices from the ground up, including fast load times, semantic HTML, structured data, and on-page optimization. We also offer ongoing SEO retainer services.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the best tech stack for a business website in 2026?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "For most businesses in 2026, we recommend Next.js with React for the frontend, combined with TypeScript for type safety. This stack offers server-side rendering for SEO, excellent performance scores, and scales effortlessly. For e-commerce, we add headless CMS solutions like Sanity or Shopify's Storefront API.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does SEO cost for a small business?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "SEO pricing varies based on competition and goals. At Webier Studio, technical SEO is included with every website build. For ongoing SEO services including content strategy, link building, and monthly reporting, our retainer packages start from $500/month.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the difference between a template website and custom development?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Template websites use pre-built designs that limit customization, performance, and SEO control. Custom development (what Webier Studio offers) means every element is designed and coded specifically for your brand, optimized for speed, SEO, and conversions. Custom sites typically load 2-5x faster and convert significantly better.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why is my website slow and how do I fix it?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Common causes of slow websites include unoptimized images, render-blocking JavaScript, poor hosting, excessive plugins, and lack of caching. We fix these through image optimization (WebP/AVIF), code splitting, CDN deployment, lazy loading, and Core Web Vitals optimization. Most sites we optimize achieve 90+ PageSpeed scores.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need a mobile app or is a responsive website enough?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "For most businesses, a well-built responsive website with Progressive Web App (PWA) features is sufficient and more cost-effective. A native mobile app is recommended only if you need offline functionality, push notifications, device hardware access, or have a specific use case like a marketplace or SaaS tool. We help you decide the best approach for your business.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How important is website speed for SEO and conversions?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Website speed directly affects both SEO rankings and conversion rates. Google uses Core Web Vitals as a ranking factor, and studies show each additional second of load time can reduce conversions by up to 20%. Common causes include unoptimized images, excessive plugins, and poor hosting. At Webier Studio, we optimize every site for sub-second load times.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Should I use a website builder or get a custom website built?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Website builders like Wix or Squarespace work for simple, budget-conscious needs—a basic portfolio or landing page. However, if your business depends on SEO, performance, and a unique brand experience, a custom-built website using modern frameworks like Next.js offers significantly better speed, flexibility, and long-term value. We help businesses decide which approach fits their stage and goals.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is local SEO and does my small business need it?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Local SEO helps your business appear in search results when people nearby search for services you offer—like 'web designer near me' or 'best restaurant in [city]'. For any business serving a specific geographic area, local SEO through Google Business Profile optimization, consistent NAP citations, customer reviews, and location-specific content is one of the highest-ROI marketing investments available.",
+      },
+    },
+  ],
+};
+
+/** Schema 4 — Organization (Triggers Knowledge Panel in Google) */
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://webierstudio.com/#organization",
+  name: "Webier Studio",
+  url: "https://webierstudio.com",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://webierstudio.com/webierLogo.webp",
+  },
+  email: "contact@webierstudio.com",
+  description:
+    "Premium web design, SEO, and AI-powered systems agency serving US businesses. Building high-performance websites using React and Next.js.",
+  foundingDate: "2025",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "contact@webierstudio.com",
+    contactType: "customer service",
+    availableLanguage: ["English", "Hindi"],
+  },
+  sameAs: [
+    "https://www.instagram.com/webier.in/",
+    "https://www.linkedin.com/company/webierdev/",
+  ],
+};
+
+// ---------------------------------------------------------------------------
+// ROOT LAYOUT
+// ---------------------------------------------------------------------------
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" dir="ltr">
+      <head>
+        {/* ── Viewport & Theme ─────────────────────────────────────────── */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#3533CD" />
+        <meta name="color-scheme" content="light" />
+
+        {/* ── Geo Targeting (US-focused) ───────────────────────────────── */}
+        <meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="English" />
+        <meta name="target" content="all" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+
+        {/* ── Preload Fonts for Performance ────────────────────────────── */}
+        <link
+          rel="preload"
+          href="/fonts/Satoshi-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/ClashDisplay-Bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
+        {/* ── Favicon / PWA Icons ─────────────────────────────────────── */}
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Webier Studio Journal — RSS Feed"
+          href="/rss.xml"
+        />
+
+        {/* ── Structured Data (JSON-LD) ────────────────────────────────── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
+
+
+        {/* ── 3rd-Party Scripts (deferred) ─────────────────────────────── */}
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            id="vtag-ai-js"
+            strategy="lazyOnload"
+            src="https://r2.leadsy.ai/tag.js"
+            data-pid="17gkBAUsVsoePvCag"
+            data-version="062024"
+          />
+        )}
+        <Script
+          id="chatbase-init"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+                  window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};
+                  window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})
+                }
+                const loadChatbase=function(){
+                  if(window._cbLoaded) return;
+                  window._cbLoaded = true;
+                  const script=document.createElement("script");
+                  script.src="https://www.chatbase.co/embed.min.js";
+                  script.id="q2NRpEmksjnS4e5lI29r-";
+                  script.domain="www.chatbase.co";
+                  document.body.appendChild(script);
+                };
+                if('requestIdleCallback' in window){
+                  window.requestIdleCallback(function(){ setTimeout(loadChatbase, 2500); });
+                } else {
+                  setTimeout(loadChatbase, 3500);
+                }
+                window.addEventListener('scroll', loadChatbase, { once: true, passive: true });
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="bg-bg text-[#1a1a1a] min-h-screen relative font-sans selection:bg-[#3533cd] selection:text-white">
+        {children}
+        {/* Google Analytics via native Next.js Script */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-VVVMWE8Q0G"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-VVVMWE8Q0G', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+      </body>
+    </html>
+  );
+}

@@ -1,0 +1,100 @@
+# Webier Studio — llms.txt
+# This file helps AI language models & search engines understand our site.
+# Learn more: https://llmstxt.org
+
+> Webier Studio is a two-person premium web design, SEO, and AI automation agency building high-performance websites, search ranking strategies, and AI-powered systems for businesses — primarily in the United States.
+
+## About Webier Studio
+
+Founded in 2025, Webier Studio blends strategy with design to craft digital experiences that don't just look good — they convert and perform. We work with a small, focused client roster to deliver maximum quality.
+
+**Core Belief:** Most agencies sell you a website. We build the thing your competitors will wish they thought of first.
+
+## Technical Stack & Expertise
+We use cutting-edge, high-performance web technologies:
+- **Frontend Framework**: Next.js 14 (App Router), React 18, TypeScript
+- **Styling & UI**: Tailwind CSS, custom design systems
+- **Animations & Interactivity**: GSAP (GreenSock Animation Platform), ScrollTrigger, Lenis smooth scrolling
+- **Backend & APIs**: Next.js Serverless Route Handlers, Resend API
+- **Performance & Analytics**: Core Web Vitals optimization, Google Analytics 4, Vercel Speed Insights & Web Analytics
+
+## Our Services
+
+- **Web Development** (React / Next.js / TypeScript): High-performance, conversion-focused websites built for speed, scalability, and SEO.
+- **Mobile App Development**: Cross-platform apps for iOS & Android using React Native.
+- **UI/UX Design**: Human-centered interface design that increases engagement and converts visitors to customers.
+- **SEO & Performance Optimization**: Technical SEO, Core Web Vitals, schema markup structure, content mapping, and ongoing ranking improvements.
+- **Branding & Visual Identity**: Logo, color systems, typography, and brand guidelines.
+- **AI Chatbot Integration & Automation**: AI-powered custom chatbot integrations and automated backend workflows (e.g. Chatbase, custom LLMs).
+- **Google & Meta Ads Management**: Paid advertising strategy, targeting, copy, and performance analytics.
+
+## Selected Works & Case Studies
+
+- **East Pointe** (eastpointekc.com): Luxury lake cabin experience near Kansas City, Missouri. Full website design, development, and SEO.
+- **Korden Technologies** (korden.tech): Semiconductor and critical component sourcing. B2B website design and development.
+- **SOZO Inc.** (sozocorporate.com): Independent premium streetwear brand. E-commerce and brand website.
+
+## Resources & Guides (Blog Articles)
+Explore our deep-dives and guides on web design, development, and growth:
+- **SEO & Search Strategy**:
+  - Why Your Business Website Needs a Blog: `https://webierstudio.com/blog/content-marketing-blogging-business-website-2026`
+  - Next.js vs WordPress for Business Websites: `https://webierstudio.com/blog/nextjs-vs-wordpress-2026-business-website`
+  - Technical SEO Checklist: `https://webierstudio.com/blog/technical-seo-checklist-2026`
+  - Local SEO Guide for Small Businesses: `https://webierstudio.com/blog/local-seo-guide-small-business-2026`
+  - SEO Mistakes Killing Your Rankings: `https://webierstudio.com/blog/seo-mistakes-killing-your-rankings-2026`
+  - Mastering Core Web Vitals (INP, LCP, CLS): `https://webierstudio.com/blog/optimizing-core-web-vitals-inp-lcp-cls-2026`
+  - Schema Markup & Google Rich Snippets: `https://webierstudio.com/blog/schema-markup-jsonld-rich-snippets-google-2026`
+- **Design, UX & Branding**:
+  - Conversion Rate Optimization (CRO) with Premium UI/UX: `https://webierstudio.com/blog/conversion-rate-optimization-premium-uiux-design`
+  - UI/UX Design Trends to Drive Conversions: `https://webierstudio.com/blog/ui-ux-design-trends-2026-conversions`
+  - Mobile-First Design in 2026: `https://webierstudio.com/blog/mobile-first-design-importance-2026`
+  - Web Accessibility for Business: `https://webierstudio.com/blog/web-accessibility-guide-2026-business`
+  - Branding and Website Design Connection: `https://webierstudio.com/blog/branding-website-design-2026-connection`
+  - Designing High-End Dark Mode Interfaces: `https://webierstudio.com/blog/dark-mode-design-best-practices-modern-web-2026`
+  - Luxury Hospitality Web Design & Direct Bookings: `https://webierstudio.com/blog/luxury-hospitality-website-design-secrets-2026`
+  - The First 5 Seconds: Hero Section UX: `https://webierstudio.com/blog/reducing-bounce-rate-first-impression-ux-2026`
+- **Development, Performance & AI**:
+  - Website Speed Optimization Guide: `https://webierstudio.com/blog/website-speed-optimization-guide-2026`
+  - Next.js & React Server Components for Business Growth: `https://webierstudio.com/blog/nextjs-react-server-components-business-growth`
+  - Progressive Web Apps (PWA) Guide: `https://webierstudio.com/blog/progressive-web-apps-2026-business-guide`
+  - Headless CMS vs Traditional CMS: `https://webierstudio.com/blog/headless-cms-vs-traditional-cms-2026`
+  - Mastering Micro-Animations with GSAP in Next.js: `https://webierstudio.com/blog/building-micro-animations-with-gsap-nextjs-guide-2026`
+  - How AI Chatbots Double Lead Conversions: `https://webierstudio.com/blog/ai-chatbots-customer-conversion-business-growth-2026`
+  - Next.js App Router Caching & Revalidation: `https://webierstudio.com/blog/nextjs-caching-revalidation-strategies-production-2026`
+  - Hardening Next.js Security Headers & CSP: `https://webierstudio.com/blog/modern-web-app-security-headers-csp-hardening-2026`
+  - Zero-Lag Media: Advanced Image & Video Optimization: `https://webierstudio.com/blog/image-video-optimization-techniques-sub-second-web-2026`
+
+## Target Clients
+
+We specialize in helping:
+- US-based hospitality businesses (short-term rentals, hotels, vacation properties)
+- Startups and SaaS companies needing a premium web presence
+- Local service businesses needing conversion-optimized websites
+- E-commerce brands needing performant, beautiful storefronts
+
+## Key Facts
+
+- Team Size: 2 core members (designer + developer)
+- Founded: 2025
+- Countries Served: USA, UK, UAE, India
+- Projects Delivered: 15+
+- Client Satisfaction: 100% retention rate
+- Response Time: Within 24 hours
+
+## Contact & Social
+
+- **Email**: contact@webierstudio.com
+- **Website**: https://webierstudio.com
+- **Instagram**: https://www.instagram.com/webier.in/
+- **LinkedIn**: https://www.linkedin.com/company/webierdev/
+- **WhatsApp**: https://wa.me/918209965066
+
+## Pricing Range
+
+Projects start from $500 and scale with complexity. We offer:
+- Starter websites: $500 – $1,500
+- Business websites: $1,500 – $5,000
+- Full-scale platforms and apps: $5,000+
+
+---
+*Last updated: 2026-07-02*
